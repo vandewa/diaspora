@@ -1,7 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Livewire\HomePage;
+use App\Http\Controllers\HomeController;
+use Illuminate\Support\Facades\File;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,7 +16,11 @@ use App\Livewire\HomePage;
 |
 */
 
-Route::get('/', HomePage::class)->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('index');
+//dokumentasi template
+Route::get('docs', function () {
+    return File::get(public_path() . '/documentation.html');
+});
 
 Route::middleware([
     'auth:sanctum',
