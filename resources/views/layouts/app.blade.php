@@ -1,1184 +1,723 @@
 <!DOCTYPE html>
-<html lang="en-US">
+<html lang="en">
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>Katen - Minimal Blog & Magazine HTML Theme</title>
-	<meta name="description" content="Katen - Minimal Blog & Magazine HTML Theme">
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-	<link rel="shortcut icon" type="image/x-icon" href="images/favicon.png">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Diaspora | Dashboard</title>
 
-	<!-- STYLES -->
-	<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" media="all">
-	<link rel="stylesheet" href="css/all.min.css" type="text/css" media="all">
-	<link rel="stylesheet" href="css/slick.css" type="text/css" media="all">
-	<link rel="stylesheet" href="css/simple-line-icons.css" type="text/css" media="all">
-	<link rel="stylesheet" href="css/style.css" type="text/css" media="all">
-
-	<!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="{{ asset('AdminLTE/plugins/fontawesome-free/css/all.min.css')}}">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- Tempusdominus Bootstrap 4 -->
+  <link rel="stylesheet" href="{{ asset('AdminLTE/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css')}}">
+  <!-- iCheck -->
+  <link rel="stylesheet" href="{{ asset('AdminLTE/plugins/icheck-bootstrap/icheck-bootstrap.min.css')}}">
+  <!-- JQVMap -->
+  <link rel="stylesheet" href="{{ asset('AdminLTE/plugins/jqvmap/jqvmap.min.css')}}">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="{{ asset('AdminLTE/dist/css/adminlte.min.css')}}">
+  <!-- overlayScrollbars -->
+  <link rel="stylesheet" href="{{ asset('AdminLTE/plugins/overlayScrollbars/css/OverlayScrollbars.min.css')}}">
+  <!-- Daterange picker -->
+  <link rel="stylesheet" href="{{ asset('AdminLTE/plugins/daterangepicker/daterangepicker.css')}}">
+  <!-- summernote -->
+  <link rel="stylesheet" href="{{ asset('AdminLTE/plugins/summernote/summernote-bs4.min.css')}}">
+  @vite([])
 
 </head>
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
 
-<body>
+  <!-- Preloader -->
+  <div class="preloader flex-column justify-content-center align-items-center">
+    <img class="animation__shake" src="{{ asset('AdminLTE/dist/img/AdminLTELogo.png')}}" alt="AdminLTELogo" height="60" width="60">
+  </div>
 
-<!-- preloader -->
-<div id="preloader">
-	<div class="book">
-		<div class="inner">
-			<div class="left"></div>
-			<div class="middle"></div>
-			<div class="right"></div>
-		</div>
-		<ul>
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-		</ul>
-	</div>
-</div>
+  <!-- Navbar -->
+  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+    <!-- Left navbar links -->
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+      </li>
+    </ul>
 
-<!-- site wrapper -->
-<div class="site-wrapper">
-
-	<div class="main-overlay"></div>
-
-	<!-- header -->
-	<header class="header-default">
-		<nav class="navbar navbar-expand-lg">
-			<div class="container-xl">
-				<!-- site logo -->
-				<a class="navbar-brand" href="index.html"><img src="images/logo.svg" alt="logo" /></a> 
-
-				<div class="collapse navbar-collapse">
-					<!-- menus -->
-					<ul class="mr-auto navbar-nav">
-						<li class="nav-item dropdown active">
-							<a class="nav-link dropdown-toggle" href="index.html">Home</a>
-							<ul class="dropdown-menu">
-								<li><a class="dropdown-item" href="index.html">Magazine</a></li>
-								<li><a class="dropdown-item" href="personal.html">Personal</a></li>
-								<li><a class="dropdown-item" href="personal-alt.html">Personal Alt</a></li>
-								<li><a class="dropdown-item" href="minimal.html">Minimal</a></li>
-								<li><a class="dropdown-item" href="classic.html">Classic</a></li>
-							</ul>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="category.html">Lifestyle</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="category.html">Inspiration</a>
-						</li>
-						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#">Pages</a>
-							<ul class="dropdown-menu">
-								<li><a class="dropdown-item" href="category.html">Category</a></li>
-								<li><a class="dropdown-item" href="blog-single.html">Blog Single</a></li>
-								<li><a class="dropdown-item" href="blog-single-alt.html">Blog Single Alt</a></li>
-								<li><a class="dropdown-item" href="about.html">About</a></li>
-								<li><a class="dropdown-item" href="contact.html">Contact</a></li>
-							</ul>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="contact.html">Contact</a>
-						</li>
-					</ul>
-				</div>
-
-				<!-- header right section -->
-				<div class="header-right">
-					<!-- social icons -->
-					<ul class="mb-0 social-icons list-unstyled list-inline">
-						<li class="list-inline-item"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-						<li class="list-inline-item"><a href="#"><i class="fab fa-twitter"></i></a></li>
-						<li class="list-inline-item"><a href="#"><i class="fab fa-instagram"></i></a></li>
-						<li class="list-inline-item"><a href="#"><i class="fab fa-pinterest"></i></a></li>
-						<li class="list-inline-item"><a href="#"><i class="fab fa-medium"></i></a></li>
-						<li class="list-inline-item"><a href="#"><i class="fab fa-youtube"></i></a></li>
-					</ul>
-					<!-- header buttons -->
-					<div class="header-buttons">
-						<button class="search icon-button">
-							<i class="icon-magnifier"></i>
-						</button>
-						<button class="burger-menu icon-button">
-							<span class="burger-icon"></span>
-						</button>
-					</div>
-				</div>
-			</div>
-		</nav>
-	</header>
-
-	<!-- section hero -->
-    <section class="hero data-bg-image d-flex align-items-center" data-bg-image="{{ asset('images/other/hero.jpg')}}">
-        <div class="container-xl">
-            <!-- call to action -->
-            <div class="text-center cta">
-                <h2 class="mt-0 mb-4">I'm Katen Doe.</h2>
-                <p class="mt-0 mb-4">Hello, I’m a content writer who is fascinated by content fashion, celebrity and lifestyle. She helps clients bring the right content to the right people.</p>
-                <a href="#" class="mt-2 btn btn-light">About Me</a>
+  <!-- Right navbar links -->
+  <ul class="ml-auto navbar-nav">
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('logout') }}"
+            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+            <div class="d-flex align-items-center">
+                <div class="ms-3"><i class="mr-2 fas fa-sign-out-alt"></i></i>Keluar</div>
             </div>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                @csrf
+            </form>
+        </a>
+    </li>
+</ul>
+  </nav>
+  <!-- /.navbar -->
+
+	@include('layouts.back.sidebar')
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="mb-2 row">
+          <div class="col-sm-6">
+            <h1 class="m-0">Dashboard</h1>
+          </div><!-- /.col -->
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">Dashboard v1</li>
+            </ol>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <!-- Small boxes (Stat box) -->
+        <div class="row">
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-info">
+              <div class="inner">
+                <h3>150</h3>
+
+                <p>New Orders</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-bag"></i>
+              </div>
+              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-success">
+              <div class="inner">
+                <h3>53<sup style="font-size: 20px">%</sup></h3>
+
+                <p>Bounce Rate</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-stats-bars"></i>
+              </div>
+              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-warning">
+              <div class="inner">
+                <h3>44</h3>
+
+                <p>User Registrations</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-person-add"></i>
+              </div>
+              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-danger">
+              <div class="inner">
+                <h3>65</h3>
+
+                <p>Unique Visitors</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-pie-graph"></i>
+              </div>
+              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <!-- ./col -->
         </div>
-        <!-- animated mouse wheel -->
-        <span class="mouse">
-            <span class="wheel"></span>
-        </span>
-        <!-- wave svg -->
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 260"><path fill="#FFF" fill-opacity="1" d="M0,256L60,245.3C120,235,240,213,360,218.7C480,224,600,256,720,245.3C840,235,960,181,1080,176C1200,171,1320,213,1380,234.7L1440,256L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path></svg>
+        <!-- /.row -->
+        <!-- Main row -->
+        <div class="row">
+          <!-- Left col -->
+          <section class="col-lg-7 connectedSortable">
+            <!-- Custom tabs (Charts with tabs)-->
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">
+                  <i class="mr-1 fas fa-chart-pie"></i>
+                  Sales
+                </h3>
+                <div class="card-tools">
+                  <ul class="ml-auto nav nav-pills">
+                    <li class="nav-item">
+                      <a class="nav-link active" href="#revenue-chart" data-toggle="tab">Area</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#sales-chart" data-toggle="tab">Donut</a>
+                    </li>
+                  </ul>
+                </div>
+              </div><!-- /.card-header -->
+              <div class="card-body">
+                <div class="p-0 tab-content">
+                  <!-- Morris chart - Sales -->
+                  <div class="chart tab-pane active" id="revenue-chart"
+                       style="position: relative; height: 300px;">
+                      <canvas id="revenue-chart-canvas" height="300" style="height: 300px;"></canvas>
+                   </div>
+                  <div class="chart tab-pane" id="sales-chart" style="position: relative; height: 300px;">
+                    <canvas id="sales-chart-canvas" height="300" style="height: 300px;"></canvas>
+                  </div>
+                </div>
+              </div><!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+
+            <!-- DIRECT CHAT -->
+            <div class="card direct-chat direct-chat-primary">
+              <div class="card-header">
+                <h3 class="card-title">Direct Chat</h3>
+
+                <div class="card-tools">
+                  <span title="3 New Messages" class="badge badge-primary">3</span>
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                    <i class="fas fa-minus"></i>
+                  </button>
+                  <button type="button" class="btn btn-tool" title="Contacts" data-widget="chat-pane-toggle">
+                    <i class="fas fa-comments"></i>
+                  </button>
+                  <button type="button" class="btn btn-tool" data-card-widget="remove">
+                    <i class="fas fa-times"></i>
+                  </button>
+                </div>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <!-- Conversations are loaded here -->
+                <div class="direct-chat-messages">
+                  <!-- Message. Default to the left -->
+                  <div class="direct-chat-msg">
+                    <div class="clearfix direct-chat-infos">
+                      <span class="float-left direct-chat-name">Alexander Pierce</span>
+                      <span class="float-right direct-chat-timestamp">23 Jan 2:00 pm</span>
+                    </div>
+                    <!-- /.direct-chat-infos -->
+                    <img class="direct-chat-img" src="{{ asset('AdminLTE/dist/img/user1-128x128.jpg')}}" alt="message user image">
+                    <!-- /.direct-chat-img -->
+                    <div class="direct-chat-text">
+                      Is this template really for free? That's unbelievable!
+                    </div>
+                    <!-- /.direct-chat-text -->
+                  </div>
+                  <!-- /.direct-chat-msg -->
+
+                  <!-- Message to the right -->
+                  <div class="direct-chat-msg right">
+                    <div class="clearfix direct-chat-infos">
+                      <span class="float-right direct-chat-name">Sarah Bullock</span>
+                      <span class="float-left direct-chat-timestamp">23 Jan 2:05 pm</span>
+                    </div>
+                    <!-- /.direct-chat-infos -->
+                    <img class="direct-chat-img" src="{{ asset('AdminLTE/dist/img/user3-128x128.jpg')}}" alt="message user image">
+                    <!-- /.direct-chat-img -->
+                    <div class="direct-chat-text">
+                      You better believe it!
+                    </div>
+                    <!-- /.direct-chat-text -->
+                  </div>
+                  <!-- /.direct-chat-msg -->
+
+                  <!-- Message. Default to the left -->
+                  <div class="direct-chat-msg">
+                    <div class="clearfix direct-chat-infos">
+                      <span class="float-left direct-chat-name">Alexander Pierce</span>
+                      <span class="float-right direct-chat-timestamp">23 Jan 5:37 pm</span>
+                    </div>
+                    <!-- /.direct-chat-infos -->
+                    <img class="direct-chat-img" src="{{ asset('AdminLTE/dist/img/user1-128x128.jpg')}}" alt="message user image">
+                    <!-- /.direct-chat-img -->
+                    <div class="direct-chat-text">
+                      Working with AdminLTE on a great new app! Wanna join?
+                    </div>
+                    <!-- /.direct-chat-text -->
+                  </div>
+                  <!-- /.direct-chat-msg -->
+
+                  <!-- Message to the right -->
+                  <div class="direct-chat-msg right">
+                    <div class="clearfix direct-chat-infos">
+                      <span class="float-right direct-chat-name">Sarah Bullock</span>
+                      <span class="float-left direct-chat-timestamp">23 Jan 6:10 pm</span>
+                    </div>
+                    <!-- /.direct-chat-infos -->
+                    <img class="direct-chat-img" src="{{ asset('AdminLTE/dist/img/user3-128x128.jpg')}}" alt="message user image">
+                    <!-- /.direct-chat-img -->
+                    <div class="direct-chat-text">
+                      I would love to.
+                    </div>
+                    <!-- /.direct-chat-text -->
+                  </div>
+                  <!-- /.direct-chat-msg -->
+
+                </div>
+                <!--/.direct-chat-messages-->
+
+                <!-- Contacts are loaded here -->
+                <div class="direct-chat-contacts">
+                  <ul class="contacts-list">
+                    <li>
+                      <a href="#">
+                        <img class="contacts-list-img" src="{{ asset('AdminLTE/dist/img/user1-128x128.jpg')}}" alt="User Avatar">
+
+                        <div class="contacts-list-info">
+                          <span class="contacts-list-name">
+                            Count Dracula
+                            <small class="float-right contacts-list-date">2/28/2015</small>
+                          </span>
+                          <span class="contacts-list-msg">How have you been? I was...</span>
+                        </div>
+                        <!-- /.contacts-list-info -->
+                      </a>
+                    </li>
+                    <!-- End Contact Item -->
+                    <li>
+                      <a href="#">
+                        <img class="contacts-list-img" src="{{ asset('AdminLTE/dist/img/user7-128x128.jpg')}}" alt="User Avatar">
+
+                        <div class="contacts-list-info">
+                          <span class="contacts-list-name">
+                            Sarah Doe
+                            <small class="float-right contacts-list-date">2/23/2015</small>
+                          </span>
+                          <span class="contacts-list-msg">I will be waiting for...</span>
+                        </div>
+                        <!-- /.contacts-list-info -->
+                      </a>
+                    </li>
+                    <!-- End Contact Item -->
+                    <li>
+                      <a href="#">
+                        <img class="contacts-list-img" src="{{ asset('AdminLTE/dist/img/user3-128x128.jpg')}}" alt="User Avatar">
+
+                        <div class="contacts-list-info">
+                          <span class="contacts-list-name">
+                            Nadia Jolie
+                            <small class="float-right contacts-list-date">2/20/2015</small>
+                          </span>
+                          <span class="contacts-list-msg">I'll call you back at...</span>
+                        </div>
+                        <!-- /.contacts-list-info -->
+                      </a>
+                    </li>
+                    <!-- End Contact Item -->
+                    <li>
+                      <a href="#">
+                        <img class="contacts-list-img" src="{{ asset('AdminLTE/dist/img/user5-128x128.jpg')}}" alt="User Avatar">
+
+                        <div class="contacts-list-info">
+                          <span class="contacts-list-name">
+                            Nora S. Vans
+                            <small class="float-right contacts-list-date">2/10/2015</small>
+                          </span>
+                          <span class="contacts-list-msg">Where is your new...</span>
+                        </div>
+                        <!-- /.contacts-list-info -->
+                      </a>
+                    </li>
+                    <!-- End Contact Item -->
+                    <li>
+                      <a href="#">
+                        <img class="contacts-list-img" src="{{ asset('AdminLTE/dist/img/user6-128x128.jpg')}}" alt="User Avatar">
+
+                        <div class="contacts-list-info">
+                          <span class="contacts-list-name">
+                            John K.
+                            <small class="float-right contacts-list-date">1/27/2015</small>
+                          </span>
+                          <span class="contacts-list-msg">Can I take a look at...</span>
+                        </div>
+                        <!-- /.contacts-list-info -->
+                      </a>
+                    </li>
+                    <!-- End Contact Item -->
+                    <li>
+                      <a href="#">
+                        <img class="contacts-list-img" src="{{ asset('AdminLTE/dist/img/user8-128x128.jpg')}}" alt="User Avatar">
+
+                        <div class="contacts-list-info">
+                          <span class="contacts-list-name">
+                            Kenneth M.
+                            <small class="float-right contacts-list-date">1/4/2015</small>
+                          </span>
+                          <span class="contacts-list-msg">Never mind I found...</span>
+                        </div>
+                        <!-- /.contacts-list-info -->
+                      </a>
+                    </li>
+                    <!-- End Contact Item -->
+                  </ul>
+                  <!-- /.contacts-list -->
+                </div>
+                <!-- /.direct-chat-pane -->
+              </div>
+              <!-- /.card-body -->
+              <div class="card-footer">
+                <form action="#" method="post">
+                  <div class="input-group">
+                    <input type="text" name="message" placeholder="Type Message ..." class="form-control">
+                    <span class="input-group-append">
+                      <button type="button" class="btn btn-primary">Send</button>
+                    </span>
+                  </div>
+                </form>
+              </div>
+              <!-- /.card-footer-->
+            </div>
+            <!--/.direct-chat -->
+
+            <!-- TO DO List -->
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">
+                  <i class="mr-1 ion ion-clipboard"></i>
+                  To Do List
+                </h3>
+
+                <div class="card-tools">
+                  <ul class="pagination pagination-sm">
+                    <li class="page-item"><a href="#" class="page-link">&laquo;</a></li>
+                    <li class="page-item"><a href="#" class="page-link">1</a></li>
+                    <li class="page-item"><a href="#" class="page-link">2</a></li>
+                    <li class="page-item"><a href="#" class="page-link">3</a></li>
+                    <li class="page-item"><a href="#" class="page-link">&raquo;</a></li>
+                  </ul>
+                </div>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <ul class="todo-list" data-widget="todo-list">
+                  <li>
+                    <!-- drag handle -->
+                    <span class="handle">
+                      <i class="fas fa-ellipsis-v"></i>
+                      <i class="fas fa-ellipsis-v"></i>
+                    </span>
+                    <!-- checkbox -->
+                    <div  class="ml-2 icheck-primary d-inline">
+                      <input type="checkbox" value="" name="todo1" id="todoCheck1">
+                      <label for="todoCheck1"></label>
+                    </div>
+                    <!-- todo text -->
+                    <span class="text">Design a nice theme</span>
+                    <!-- Emphasis label -->
+                    <small class="badge badge-danger"><i class="far fa-clock"></i> 2 mins</small>
+                    <!-- General tools such as edit or delete-->
+                    <div class="tools">
+                      <i class="fas fa-edit"></i>
+                      <i class="fas fa-trash-o"></i>
+                    </div>
+                  </li>
+                  <li>
+                    <span class="handle">
+                      <i class="fas fa-ellipsis-v"></i>
+                      <i class="fas fa-ellipsis-v"></i>
+                    </span>
+                    <div  class="ml-2 icheck-primary d-inline">
+                      <input type="checkbox" value="" name="todo2" id="todoCheck2" checked>
+                      <label for="todoCheck2"></label>
+                    </div>
+                    <span class="text">Make the theme responsive</span>
+                    <small class="badge badge-info"><i class="far fa-clock"></i> 4 hours</small>
+                    <div class="tools">
+                      <i class="fas fa-edit"></i>
+                      <i class="fas fa-trash-o"></i>
+                    </div>
+                  </li>
+                  <li>
+                    <span class="handle">
+                      <i class="fas fa-ellipsis-v"></i>
+                      <i class="fas fa-ellipsis-v"></i>
+                    </span>
+                    <div  class="ml-2 icheck-primary d-inline">
+                      <input type="checkbox" value="" name="todo3" id="todoCheck3">
+                      <label for="todoCheck3"></label>
+                    </div>
+                    <span class="text">Let theme shine like a star</span>
+                    <small class="badge badge-warning"><i class="far fa-clock"></i> 1 day</small>
+                    <div class="tools">
+                      <i class="fas fa-edit"></i>
+                      <i class="fas fa-trash-o"></i>
+                    </div>
+                  </li>
+                  <li>
+                    <span class="handle">
+                      <i class="fas fa-ellipsis-v"></i>
+                      <i class="fas fa-ellipsis-v"></i>
+                    </span>
+                    <div  class="ml-2 icheck-primary d-inline">
+                      <input type="checkbox" value="" name="todo4" id="todoCheck4">
+                      <label for="todoCheck4"></label>
+                    </div>
+                    <span class="text">Let theme shine like a star</span>
+                    <small class="badge badge-success"><i class="far fa-clock"></i> 3 days</small>
+                    <div class="tools">
+                      <i class="fas fa-edit"></i>
+                      <i class="fas fa-trash-o"></i>
+                    </div>
+                  </li>
+                  <li>
+                    <span class="handle">
+                      <i class="fas fa-ellipsis-v"></i>
+                      <i class="fas fa-ellipsis-v"></i>
+                    </span>
+                    <div  class="ml-2 icheck-primary d-inline">
+                      <input type="checkbox" value="" name="todo5" id="todoCheck5">
+                      <label for="todoCheck5"></label>
+                    </div>
+                    <span class="text">Check your messages and notifications</span>
+                    <small class="badge badge-primary"><i class="far fa-clock"></i> 1 week</small>
+                    <div class="tools">
+                      <i class="fas fa-edit"></i>
+                      <i class="fas fa-trash-o"></i>
+                    </div>
+                  </li>
+                  <li>
+                    <span class="handle">
+                      <i class="fas fa-ellipsis-v"></i>
+                      <i class="fas fa-ellipsis-v"></i>
+                    </span>
+                    <div  class="ml-2 icheck-primary d-inline">
+                      <input type="checkbox" value="" name="todo6" id="todoCheck6">
+                      <label for="todoCheck6"></label>
+                    </div>
+                    <span class="text">Let theme shine like a star</span>
+                    <small class="badge badge-secondary"><i class="far fa-clock"></i> 1 month</small>
+                    <div class="tools">
+                      <i class="fas fa-edit"></i>
+                      <i class="fas fa-trash-o"></i>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <!-- /.card-body -->
+              <div class="clearfix card-footer">
+                <button type="button" class="float-right btn btn-primary"><i class="fas fa-plus"></i> Add item</button>
+              </div>
+            </div>
+            <!-- /.card -->
+          </section>
+          <!-- /.Left col -->
+          <!-- right col (We are only adding the ID to make the widgets sortable)-->
+          <section class="col-lg-5 connectedSortable">
+
+            <!-- Map card -->
+            <div class="card bg-gradient-primary">
+              <div class="border-0 card-header">
+                <h3 class="card-title">
+                  <i class="mr-1 fas fa-map-marker-alt"></i>
+                  Visitors
+                </h3>
+                <!-- card tools -->
+                <div class="card-tools">
+                  <button type="button" class="btn btn-primary btn-sm daterange" title="Date range">
+                    <i class="far fa-calendar-alt"></i>
+                  </button>
+                  <button type="button" class="btn btn-primary btn-sm" data-card-widget="collapse" title="Collapse">
+                    <i class="fas fa-minus"></i>
+                  </button>
+                </div>
+                <!-- /.card-tools -->
+              </div>
+              <div class="card-body">
+                <div id="world-map" style="height: 250px; width: 100%;"></div>
+              </div>
+              <!-- /.card-body-->
+              <div class="bg-transparent card-footer">
+                <div class="row">
+                  <div class="text-center col-4">
+                    <div id="sparkline-1"></div>
+                    <div class="text-white">Visitors</div>
+                  </div>
+                  <!-- ./col -->
+                  <div class="text-center col-4">
+                    <div id="sparkline-2"></div>
+                    <div class="text-white">Online</div>
+                  </div>
+                  <!-- ./col -->
+                  <div class="text-center col-4">
+                    <div id="sparkline-3"></div>
+                    <div class="text-white">Sales</div>
+                  </div>
+                  <!-- ./col -->
+                </div>
+                <!-- /.row -->
+              </div>
+            </div>
+            <!-- /.card -->
+
+            <!-- solid sales graph -->
+            <div class="card bg-gradient-info">
+              <div class="border-0 card-header">
+                <h3 class="card-title">
+                  <i class="mr-1 fas fa-th"></i>
+                  Sales Graph
+                </h3>
+
+                <div class="card-tools">
+                  <button type="button" class="btn bg-info btn-sm" data-card-widget="collapse">
+                    <i class="fas fa-minus"></i>
+                  </button>
+                  <button type="button" class="btn bg-info btn-sm" data-card-widget="remove">
+                    <i class="fas fa-times"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="card-body">
+                <canvas class="chart" id="line-chart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+              </div>
+              <!-- /.card-body -->
+              <div class="bg-transparent card-footer">
+                <div class="row">
+                  <div class="text-center col-4">
+                    <input type="text" class="knob" data-readonly="true" value="20" data-width="60" data-height="60"
+                           data-fgColor="#39CCCC">
+
+                    <div class="text-white">Mail-Orders</div>
+                  </div>
+                  <!-- ./col -->
+                  <div class="text-center col-4">
+                    <input type="text" class="knob" data-readonly="true" value="50" data-width="60" data-height="60"
+                           data-fgColor="#39CCCC">
+
+                    <div class="text-white">Online</div>
+                  </div>
+                  <!-- ./col -->
+                  <div class="text-center col-4">
+                    <input type="text" class="knob" data-readonly="true" value="30" data-width="60" data-height="60"
+                           data-fgColor="#39CCCC">
+
+                    <div class="text-white">In-Store</div>
+                  </div>
+                  <!-- ./col -->
+                </div>
+                <!-- /.row -->
+              </div>
+              <!-- /.card-footer -->
+            </div>
+            <!-- /.card -->
+
+            <!-- Calendar -->
+            <div class="card bg-gradient-success">
+              <div class="border-0 card-header">
+
+                <h3 class="card-title">
+                  <i class="far fa-calendar-alt"></i>
+                  Calendar
+                </h3>
+                <!-- tools card -->
+                <div class="card-tools">
+                  <!-- button with a dropdown -->
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown" data-offset="-52">
+                      <i class="fas fa-bars"></i>
+                    </button>
+                    <div class="dropdown-menu" role="menu">
+                      <a href="#" class="dropdown-item">Add new event</a>
+                      <a href="#" class="dropdown-item">Clear events</a>
+                      <div class="dropdown-divider"></div>
+                      <a href="#" class="dropdown-item">View calendar</a>
+                    </div>
+                  </div>
+                  <button type="button" class="btn btn-success btn-sm" data-card-widget="collapse">
+                    <i class="fas fa-minus"></i>
+                  </button>
+                  <button type="button" class="btn btn-success btn-sm" data-card-widget="remove">
+                    <i class="fas fa-times"></i>
+                  </button>
+                </div>
+                <!-- /. tools -->
+              </div>
+              <!-- /.card-header -->
+              <div class="pt-0 card-body">
+                <!--The calendar -->
+                <div id="calendar" style="width: 100%"></div>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </section>
+          <!-- right col -->
+        </div>
+        <!-- /.row (main row) -->
+      </div><!-- /.container-fluid -->
     </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+  <footer class="main-footer">
+    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
+    All rights reserved.
+    <div class="float-right d-none d-sm-inline-block">
+      <b>Version</b> 3.2.0
+    </div>
+  </footer>
 
-	<!-- hero section -->
-	{{-- <section id="hero">
-
-		<div class="container-xl">
-
-			<div class="row gy-4">
-
-				<div class="col-lg-8">
-					
-					<!-- featured post large -->
-					<div class="post featured-post-lg">
-						<div class="clearfix details">
-							<a href="category.html" class="category-badge">Inspiration</a>
-							<h2 class="post-title"><a href="blog-single.html">5 Easy Ways You Can Turn Future Into Success</a></h2>
-							<ul class="mb-0 meta list-inline">
-								<li class="list-inline-item"><a href="#">Katen Doe</a></li>
-								<li class="list-inline-item">29 March 2021</li>
-							</ul>
-						</div>
-						<a href="blog-single.html">
-							<div class="rounded thumb">
-								<div class="inner data-bg-image" data-bg-image="images/posts/featured-lg.jpg"></div>
-							</div>
-						</a>
-					</div>
-
-				</div>
-
-				<div class="col-lg-4">
-
-					<!-- post tabs -->
-					<div class="rounded post-tabs bordered">
-						<!-- tab navs -->
-						<ul class="nav nav-tabs nav-pills nav-fill" id="postsTab" role="tablist">
-							<li class="nav-item" role="presentation"><button aria-controls="popular" aria-selected="true" class="nav-link active" data-bs-target="#popular" data-bs-toggle="tab" id="popular-tab" role="tab" type="button">Popular</button></li>
-							<li class="nav-item" role="presentation"><button aria-controls="recent" aria-selected="false" class="nav-link" data-bs-target="#recent" data-bs-toggle="tab" id="recent-tab" role="tab" type="button">Recent</button></li>
-						</ul>
-						<!-- tab contents -->
-						<div class="tab-content" id="postsTabContent">
-							<!-- loader -->
-							<div class="lds-dual-ring"></div>
-							<!-- popular posts -->
-							<div aria-labelledby="popular-tab" class="tab-pane fade show active" id="popular" role="tabpanel">
-								<!-- post -->
-								<div class="post post-list-sm circle">
-									<div class="thumb circle">
-										<a href="blog-single.html">
-											<div class="inner">
-												<img src="images/posts/tabs-1.jpg" alt="post-title" />
-											</div>
-										</a>
-									</div>
-									<div class="clearfix details">
-										<h6 class="my-0 post-title"><a href="blog-single.html">3 Easy Ways To Make Your iPhone Faster</a></h6>
-										<ul class="mt-1 mb-0 meta list-inline">
-											<li class="list-inline-item">29 March 2021</li>
-										</ul>
-									</div>
-								</div>
-								<!-- post -->
-								<div class="post post-list-sm circle">
-									<div class="thumb circle">
-										<a href="blog-single.html">
-											<div class="inner">
-												<img src="images/posts/tabs-2.jpg" alt="post-title" />
-											</div>
-										</a>
-									</div>
-									<div class="clearfix details">
-										<h6 class="my-0 post-title"><a href="blog-single.html">An Incredibly Easy Method That Works For All</a></h6>
-										<ul class="mt-1 mb-0 meta list-inline">
-											<li class="list-inline-item">29 March 2021</li>
-										</ul>
-									</div>
-								</div>
-								<!-- post -->
-								<div class="post post-list-sm circle">
-									<div class="thumb circle">
-										<a href="blog-single.html">
-											<div class="inner">
-												<img src="images/posts/tabs-3.jpg" alt="post-title" />
-											</div>
-										</a>
-									</div>
-									<div class="clearfix details">
-										<h6 class="my-0 post-title"><a href="blog-single.html">10 Ways To Immediately Start Selling Furniture</a></h6>
-										<ul class="mt-1 mb-0 meta list-inline">
-											<li class="list-inline-item">29 March 2021</li>
-										</ul>
-									</div>
-								</div>
-								<!-- post -->
-								<div class="post post-list-sm circle">
-									<div class="thumb circle">
-										<a href="blog-single.html">
-											<div class="inner">
-												<img src="images/posts/tabs-4.jpg" alt="post-title" />
-											</div>
-										</a>
-									</div>
-									<div class="clearfix details">
-										<h6 class="my-0 post-title"><a href="blog-single.html">15 Unheard Ways To Achieve Greater Walker</a></h6>
-										<ul class="mt-1 mb-0 meta list-inline">
-											<li class="list-inline-item">29 March 2021</li>
-										</ul>
-									</div>
-								</div>
-							</div>
-							<!-- recent posts -->
-							<div aria-labelledby="recent-tab" class="tab-pane fade" id="recent" role="tabpanel">
-								<!-- post -->
-								<div class="post post-list-sm circle">
-									<div class="thumb circle">
-										<a href="blog-single.html">
-											<div class="inner">
-												<img src="images/posts/tabs-2.jpg" alt="post-title" />
-											</div>
-										</a>
-									</div>
-									<div class="clearfix details">
-										<h6 class="my-0 post-title"><a href="blog-single.html">An Incredibly Easy Method That Works For All</a></h6>
-										<ul class="mt-1 mb-0 meta list-inline">
-											<li class="list-inline-item">29 March 2021</li>
-										</ul>
-									</div>
-								</div>
-								<!-- post -->
-								<div class="post post-list-sm circle">
-									<div class="thumb circle">
-										<a href="blog-single.html">
-											<div class="inner">
-												<img src="images/posts/tabs-1.jpg" alt="post-title" />
-											</div>
-										</a>
-									</div>
-									<div class="clearfix details">
-										<h6 class="my-0 post-title"><a href="blog-single.html">3 Easy Ways To Make Your iPhone Faster</a></h6>
-										<ul class="mt-1 mb-0 meta list-inline">
-											<li class="list-inline-item">29 March 2021</li>
-										</ul>
-									</div>
-								</div>
-								<!-- post -->
-								<div class="post post-list-sm circle">
-									<div class="thumb circle">
-										<a href="blog-single.html">
-											<div class="inner">
-												<img src="images/posts/tabs-4.jpg" alt="post-title" />
-											</div>
-										</a>
-									</div>
-									<div class="clearfix details">
-										<h6 class="my-0 post-title"><a href="blog-single.html">15 Unheard Ways To Achieve Greater Walker</a></h6>
-										<ul class="mt-1 mb-0 meta list-inline">
-											<li class="list-inline-item">29 March 2021</li>
-										</ul>
-									</div>
-								</div>
-								<!-- post -->
-								<div class="post post-list-sm circle">
-									<div class="thumb circle">
-										<a href="blog-single.html">
-											<div class="inner">
-												<img src="images/posts/tabs-3.jpg" alt="post-title" />
-											</div>
-										</a>
-									</div>
-									<div class="clearfix details">
-										<h6 class="my-0 post-title"><a href="blog-single.html">10 Ways To Immediately Start Selling Furniture</a></h6>
-										<ul class="mt-1 mb-0 meta list-inline">
-											<li class="list-inline-item">29 March 2021</li>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-			</div>
-
-		</div>
-
-	</section> --}}
-
-	<!-- section main content -->
-	<section class="main-content">
-		<div class="container-xl">
-
-			<div class="row gy-4">
-
-				<div class="col-lg-8">
-
-					<!-- section header -->
-					<div class="section-header">
-						<h3 class="section-title">Editor’s Pick</h3>
-						<img src="images/wave.svg" class="wave" alt="wave" />
-					</div>
-
-					<div class="rounded padding-30 bordered">
-						<div class="row gy-5">
-							<div class="col-sm-6">
-								<!-- post -->
-								<div class="post">
-									<div class="rounded thumb">
-										<a href="category.html" class="category-badge position-absolute">Lifestyle</a>
-										<span class="post-format">
-											<i class="icon-picture"></i>
-										</span>
-										<a href="blog-single.html">
-											<div class="inner">
-												<img src="images/posts/editor-lg.jpg" alt="post-title" />
-											</div>
-										</a>
-									</div>
-									<ul class="mt-4 mb-0 meta list-inline">
-										<li class="list-inline-item"><a href="#"><img src="images/other/author-sm.png" class="author" alt="author"/>Katen Doe</a></li>
-										<li class="list-inline-item">29 March 2021</li>
-									</ul>
-									<h5 class="mt-3 mb-3 post-title"><a href="blog-single.html">15 Unheard Ways To Achieve Greater Walker</a></h5>
-									<p class="mb-0 excerpt">A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy</p>
-								</div>
-							</div>
-							<div class="col-sm-6">
-								<!-- post -->
-								<div class="post post-list-sm square">
-									<div class="rounded thumb">
-										<a href="blog-single.html">
-											<div class="inner">
-												<img src="images/posts/editor-sm-1.jpg" alt="post-title" />
-											</div>
-										</a>
-									</div>
-									<div class="clearfix details">
-										<h6 class="my-0 post-title"><a href="blog-single.html">3 Easy Ways To Make Your iPhone Faster</a></h6>
-										<ul class="mt-1 mb-0 meta list-inline">
-											<li class="list-inline-item">29 March 2021</li>
-										</ul>
-									</div>
-								</div>
-								<!-- post -->
-								<div class="post post-list-sm square">
-									<div class="rounded thumb">
-										<a href="blog-single.html">
-											<div class="inner">
-												<img src="images/posts/editor-sm-2.jpg" alt="post-title" />
-											</div>
-										</a>
-									</div>
-									<div class="clearfix details">
-										<h6 class="my-0 post-title"><a href="blog-single.html">An Incredibly Easy Method That Works For All</a></h6>
-										<ul class="mt-1 mb-0 meta list-inline">
-											<li class="list-inline-item">29 March 2021</li>
-										</ul>
-									</div>
-								</div>
-								<!-- post -->
-								<div class="post post-list-sm square">
-									<div class="rounded thumb">
-										<a href="blog-single.html">
-											<div class="inner">
-												<img src="images/posts/editor-sm-3.jpg" alt="post-title" />
-											</div>
-										</a>
-									</div>
-									<div class="clearfix details">
-										<h6 class="my-0 post-title"><a href="blog-single.html">10 Ways To Immediately Start Selling Furniture</a></h6>
-										<ul class="mt-1 mb-0 meta list-inline">
-											<li class="list-inline-item">29 March 2021</li>
-										</ul>
-									</div>
-								</div>
-								<!-- post -->
-								<div class="post post-list-sm square">
-									<div class="rounded thumb">
-										<a href="blog-single.html">
-											<div class="inner">
-												<img src="images/posts/editor-sm-4.jpg" alt="post-title" />
-											</div>
-										</a>
-									</div>
-									<div class="clearfix details">
-										<h6 class="my-0 post-title"><a href="blog-single.html">15 Unheard Ways To Achieve Greater Walker</a></h6>
-										<ul class="mt-1 mb-0 meta list-inline">
-											<li class="list-inline-item">29 March 2021</li>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="spacer" data-height="50"></div>
-
-					<!-- horizontal ads -->
-					<div class="ads-horizontal text-md-center">
-						<span class="ads-title">- Sponsored Ad -</span>
-						<a href="#">
-							<img src="images/ads/ad-750.png" alt="Advertisement" />
-						</a>
-					</div>
-
-					<div class="spacer" data-height="50"></div>
-
-					<!-- section header -->
-					<div class="section-header">
-						<h3 class="section-title">Trending</h3>
-						<img src="images/wave.svg" class="wave" alt="wave" />
-					</div>
-
-					<div class="rounded padding-30 bordered">
-						<div class="row gy-5">
-							<div class="col-sm-6">
-								<!-- post large -->
-								<div class="post">
-									<div class="rounded thumb">
-										<a href="category.html" class="category-badge position-absolute">Culture</a>
-										<span class="post-format">
-											<i class="icon-picture"></i>
-										</span>
-										<a href="blog-single.html">
-											<div class="inner">
-												<img src="images/posts/trending-lg-1.jpg" alt="post-title" />
-											</div>
-										</a>
-									</div>
-									<ul class="mt-4 mb-0 meta list-inline">
-										<li class="list-inline-item"><a href="#"><img src="images/other/author-sm.png" class="author" alt="author"/>Katen Doe</a></li>
-										<li class="list-inline-item">29 March 2021</li>
-									</ul>
-									<h5 class="mt-3 mb-3 post-title"><a href="blog-single.html">Facts About Business That Will Help You Success</a></h5>
-									<p class="mb-0 excerpt">A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy</p>
-								</div>
-								<!-- post -->
-								<div class="post post-list-sm square before-seperator">
-									<div class="rounded thumb">
-										<a href="blog-single.html">
-											<div class="inner">
-												<img src="images/posts/trending-sm-1.jpg" alt="post-title" />
-											</div>
-										</a>
-									</div>
-									<div class="clearfix details">
-										<h6 class="my-0 post-title"><a href="blog-single.html">3 Easy Ways To Make Your iPhone Faster</a></h6>
-										<ul class="mt-1 mb-0 meta list-inline">
-											<li class="list-inline-item">29 March 2021</li>
-										</ul>
-									</div>
-								</div>
-								<!-- post -->
-								<div class="post post-list-sm square before-seperator">
-									<div class="rounded thumb">
-										<a href="blog-single.html">
-											<div class="inner">
-												<img src="images/posts/trending-sm-2.jpg" alt="post-title" />
-											</div>
-										</a>
-									</div>
-									<div class="clearfix details">
-										<h6 class="my-0 post-title"><a href="blog-single.html">An Incredibly Easy Method That Works For All</a></h6>
-										<ul class="mt-1 mb-0 meta list-inline">
-											<li class="list-inline-item">29 March 2021</li>
-										</ul>
-									</div>
-								</div>
-							</div>
-							<div class="col-sm-6">
-								<!-- post large -->
-								<div class="post">
-									<div class="rounded thumb">
-										<a href="category.html" class="category-badge position-absolute">Inspiration</a>
-										<span class="post-format">
-											<i class="icon-earphones"></i>
-										</span>
-										<a href="blog-single.html">
-											<div class="inner">
-												<img src="images/posts/trending-lg-2.jpg" alt="post-title" />
-											</div>
-										</a>
-									</div>
-									<ul class="mt-4 mb-0 meta list-inline">
-										<li class="list-inline-item"><a href="#"><img src="images/other/author-sm.png" class="author" alt="author"/>Katen Doe</a></li>
-										<li class="list-inline-item">29 March 2021</li>
-									</ul>
-									<h5 class="mt-3 mb-3 post-title"><a href="blog-single.html">5 Easy Ways You Can Turn Future Into Success</a></h5>
-									<p class="mb-0 excerpt">A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy</p>
-								</div>
-								<!-- post -->
-								<div class="post post-list-sm square before-seperator">
-									<div class="rounded thumb">
-										<a href="blog-single.html">
-											<div class="inner">
-												<img src="images/posts/trending-sm-3.jpg" alt="post-title" />
-											</div>
-										</a>
-									</div>
-									<div class="clearfix details">
-										<h6 class="my-0 post-title"><a href="blog-single.html">Here Are 8 Ways To Success Faster</a></h6>
-										<ul class="mt-1 mb-0 meta list-inline">
-											<li class="list-inline-item">29 March 2021</li>
-										</ul>
-									</div>
-								</div>
-								<!-- post -->
-								<div class="post post-list-sm square before-seperator">
-									<div class="rounded thumb">
-										<a href="blog-single.html">
-											<div class="inner">
-												<img src="images/posts/trending-sm-4.jpg" alt="post-title" />
-											</div>
-										</a>
-									</div>
-									<div class="clearfix details">
-										<h6 class="my-0 post-title"><a href="blog-single.html">Master The Art Of Nature With These 7 Tips</a></h6>
-										<ul class="mt-1 mb-0 meta list-inline">
-											<li class="list-inline-item">29 March 2021</li>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="spacer" data-height="50"></div>
-
-					<!-- section header -->
-					<div class="section-header">
-						<h3 class="section-title">Inspiration</h3>
-						<img src="images/wave.svg" class="wave" alt="wave" />
-						<div class="slick-arrows-top">
-							<button type="button" data-role="none" class="carousel-topNav-prev slick-custom-buttons" aria-label="Previous"><i class="icon-arrow-left"></i></button>
-							<button type="button" data-role="none" class="carousel-topNav-next slick-custom-buttons" aria-label="Next"><i class="icon-arrow-right"></i></button>
-						</div>
-					</div>
-
-					<div class="row post-carousel-twoCol post-carousel">
-						<!-- post -->
-						<div class="post post-over-content col-md-6">
-							<div class="clearfix details">
-								<a href="category.html" class="category-badge">Inspiration</a>
-								<h4 class="post-title"><a href="blog-single.html">Want To Have A More Appealing Tattoo?</a></h4>
-								<ul class="mb-0 meta list-inline">
-									<li class="list-inline-item"><a href="#">Katen Doe</a></li>
-									<li class="list-inline-item">29 March 2021</li>
-								</ul>
-							</div>
-							<a href="blog-single.html">
-								<div class="rounded thumb">
-									<div class="inner">
-										<img src="images/posts/inspiration-1.jpg" alt="thumb" />
-									</div>
-								</div>
-							</a>
-						</div>
-						<!-- post -->
-						<div class="post post-over-content col-md-6">
-							<div class="clearfix details">
-								<a href="category.html" class="category-badge">Inspiration</a>
-								<h4 class="post-title"><a href="blog-single.html">Feel Like A Pro With The Help Of These 7 Tips</a></h4>
-								<ul class="mb-0 meta list-inline">
-									<li class="list-inline-item"><a href="#">Katen Doe</a></li>
-									<li class="list-inline-item">29 March 2021</li>
-								</ul>
-							</div>
-							<a href="blog-single.html">
-								<div class="rounded thumb">
-									<div class="inner">
-										<img src="images/posts/inspiration-2.jpg" alt="thumb" />
-									</div>
-								</div>
-							</a>
-						</div>
-						<!-- post -->
-						<div class="post post-over-content col-md-6">
-							<div class="clearfix details">
-								<a href="category.html" class="category-badge">Inspiration</a>
-								<h4 class="post-title"><a href="blog-single.html">Your Light Is About To Stop Being Relevant</a></h4>
-								<ul class="mb-0 meta list-inline">
-									<li class="list-inline-item"><a href="#">Katen Doe</a></li>
-									<li class="list-inline-item">29 March 2021</li>
-								</ul>
-							</div>
-							<a href="blog-single.html">
-								<div class="rounded thumb">
-									<div class="inner">
-										<img src="images/posts/inspiration-3.jpg" alt="thumb" />
-									</div>
-								</div>
-							</a>
-						</div>
-					</div>
-
-					<div class="spacer" data-height="50"></div>
-
-					<!-- section header -->
-					<div class="section-header">
-						<h3 class="section-title">Latest Posts</h3>
-						<img src="images/wave.svg" class="wave" alt="wave" />
-					</div>
-
-					<div class="rounded padding-30 bordered">
-
-						<div class="row">
-							
-							<div class="col-md-12 col-sm-6">
-								<!-- post -->
-								<div class="clearfix post post-list">
-									<div class="rounded thumb">
-										<span class="post-format-sm">
-											<i class="icon-picture"></i>
-										</span>
-										<a href="blog-single.html">
-											<div class="inner">
-												<img src="images/posts/latest-sm-1.jpg" alt="post-title" />
-											</div>
-										</a>
-									</div>
-									<div class="details">
-										<ul class="mb-3 meta list-inline">
-											<li class="list-inline-item"><a href="#"><img src="images/other/author-sm.png" class="author" alt="author"/>Katen Doe</a></li>
-											<li class="list-inline-item"><a href="#">Trending</a></li>
-											<li class="list-inline-item">29 March 2021</li>
-										</ul>
-										<h5 class="post-title"><a href="blog-single.html">The Next 60 Things To Immediately Do About Building</a></h5>
-										<p class="mb-0 excerpt">A wonderful serenity has taken possession of my entire soul, like these sweet mornings</p>
-										<div class="clearfix post-bottom d-flex align-items-center">
-											<div class="social-share me-auto">
-												<button class="toggle-button icon-share"></button>
-												<ul class="mb-0 icons list-unstyled list-inline">
-													<li class="list-inline-item"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-													<li class="list-inline-item"><a href="#"><i class="fab fa-twitter"></i></a></li>
-													<li class="list-inline-item"><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-													<li class="list-inline-item"><a href="#"><i class="fab fa-pinterest"></i></a></li>
-													<li class="list-inline-item"><a href="#"><i class="fab fa-telegram-plane"></i></a></li>
-													<li class="list-inline-item"><a href="#"><i class="far fa-envelope"></i></a></li>
-												</ul>
-											</div>
-											<div class="more-button float-end">
-												<a href="blog-single.html"><span class="icon-options"></span></a>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-
-							<div class="col-md-12 col-sm-6">
-								<!-- post -->
-								<div class="clearfix post post-list">
-									<div class="rounded thumb">
-										<a href="blog-single.html">
-											<div class="inner">
-												<img src="images/posts/latest-sm-2.jpg" alt="post-title" />
-											</div>
-										</a>
-									</div>
-									<div class="details">
-										<ul class="mb-3 meta list-inline">
-											<li class="list-inline-item"><a href="#"><img src="images/other/author-sm.png" class="author" alt="author"/>Katen Doe</a></li>
-											<li class="list-inline-item"><a href="#">Lifestyle</a></li>
-											<li class="list-inline-item">29 March 2021</li>
-										</ul>
-										<h5 class="post-title"><a href="blog-single.html">Master The Art Of Nature With These 7 Tips</a></h5>
-										<p class="mb-0 excerpt">A wonderful serenity has taken possession of my entire soul, like these sweet mornings</p>
-										<div class="clearfix post-bottom d-flex align-items-center">
-											<div class="social-share me-auto">
-												<button class="toggle-button icon-share"></button>
-												<ul class="mb-0 icons list-unstyled list-inline">
-													<li class="list-inline-item"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-													<li class="list-inline-item"><a href="#"><i class="fab fa-twitter"></i></a></li>
-													<li class="list-inline-item"><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-													<li class="list-inline-item"><a href="#"><i class="fab fa-pinterest"></i></a></li>
-													<li class="list-inline-item"><a href="#"><i class="fab fa-telegram-plane"></i></a></li>
-													<li class="list-inline-item"><a href="#"><i class="far fa-envelope"></i></a></li>
-												</ul>
-											</div>
-											<div class="more-button float-end">
-												<a href="blog-single.html"><span class="icon-options"></span></a>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-
-							<div class="col-md-12 col-sm-6">
-								<!-- post -->
-								<div class="clearfix post post-list">
-									<div class="rounded thumb">
-										<span class="post-format-sm">
-											<i class="icon-camrecorder"></i>
-										</span>
-										<a href="blog-single.html">
-											<div class="inner">
-												<img src="images/posts/latest-sm-3.jpg" alt="post-title" />
-											</div>
-										</a>
-									</div>
-									<div class="details">
-										<ul class="mb-3 meta list-inline">
-											<li class="list-inline-item"><a href="#"><img src="images/other/author-sm.png" class="author" alt="author"/>Katen Doe</a></li>
-											<li class="list-inline-item"><a href="#">Fashion</a></li>
-											<li class="list-inline-item">29 March 2021</li>
-										</ul>
-										<h5 class="post-title"><a href="blog-single.html">Facts About Business That Will Help You Success</a></h5>
-										<p class="mb-0 excerpt">A wonderful serenity has taken possession of my entire soul, like these sweet mornings</p>
-										<div class="clearfix post-bottom d-flex align-items-center">
-											<div class="social-share me-auto">
-												<button class="toggle-button icon-share"></button>
-												<ul class="mb-0 icons list-unstyled list-inline">
-													<li class="list-inline-item"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-													<li class="list-inline-item"><a href="#"><i class="fab fa-twitter"></i></a></li>
-													<li class="list-inline-item"><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-													<li class="list-inline-item"><a href="#"><i class="fab fa-pinterest"></i></a></li>
-													<li class="list-inline-item"><a href="#"><i class="fab fa-telegram-plane"></i></a></li>
-													<li class="list-inline-item"><a href="#"><i class="far fa-envelope"></i></a></li>
-												</ul>
-											</div>
-											<div class="more-button float-end">
-												<a href="blog-single.html"><span class="icon-options"></span></a>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-
-							<div class="col-md-12 col-sm-6">
-								<!-- post -->
-								<div class="clearfix post post-list">
-									<div class="rounded thumb">
-										<a href="blog-single.html">
-											<div class="inner">
-												<img src="images/posts/latest-sm-4.jpg" alt="post-title" />
-											</div>
-										</a>
-									</div>
-									<div class="details">
-										<ul class="mb-3 meta list-inline">
-											<li class="list-inline-item"><a href="#"><img src="images/other/author-sm.png" class="author" alt="author"/>Katen Doe</a></li>
-											<li class="list-inline-item"><a href="#">Politic</a></li>
-											<li class="list-inline-item">29 March 2021</li>
-										</ul>
-										<h5 class="post-title"><a href="blog-single.html">Your Light Is About To Stop Being Relevant</a></h5>
-										<p class="mb-0 excerpt">A wonderful serenity has taken possession of my entire soul, like these sweet mornings</p>
-										<div class="clearfix post-bottom d-flex align-items-center">
-											<div class="social-share me-auto">
-												<button class="toggle-button icon-share"></button>
-												<ul class="mb-0 icons list-unstyled list-inline">
-													<li class="list-inline-item"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-													<li class="list-inline-item"><a href="#"><i class="fab fa-twitter"></i></a></li>
-													<li class="list-inline-item"><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-													<li class="list-inline-item"><a href="#"><i class="fab fa-pinterest"></i></a></li>
-													<li class="list-inline-item"><a href="#"><i class="fab fa-telegram-plane"></i></a></li>
-													<li class="list-inline-item"><a href="#"><i class="far fa-envelope"></i></a></li>
-												</ul>
-											</div>
-											<div class="more-button float-end">
-												<a href="blog-single.html"><span class="icon-options"></span></a>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							
-						</div
-						>
-						<!-- load more button -->
-						<div class="text-center">
-							<button class="btn btn-simple">Load More</button>
-						</div>
-
-					</div>
-
-				</div>
-				<div class="col-lg-4">
-
-					<!-- sidebar -->
-					<div class="sidebar">
-						<!-- widget about -->
-						<div class="rounded widget">
-							<div class="text-center widget-about data-bg-image" data-bg-image="images/map-bg.png">
-								<img src="images/logo.svg" alt="logo" class="mb-4" />
-								<p class="mb-4">Hello, We’re content writer who is fascinated by content fashion, celebrity and lifestyle. We helps clients bring the right content to the right people.</p>
-								<ul class="mb-0 social-icons list-unstyled list-inline">
-									<li class="list-inline-item"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-									<li class="list-inline-item"><a href="#"><i class="fab fa-twitter"></i></a></li>
-									<li class="list-inline-item"><a href="#"><i class="fab fa-instagram"></i></a></li>
-									<li class="list-inline-item"><a href="#"><i class="fab fa-pinterest"></i></a></li>
-									<li class="list-inline-item"><a href="#"><i class="fab fa-medium"></i></a></li>
-									<li class="list-inline-item"><a href="#"><i class="fab fa-youtube"></i></a></li>
-								</ul>
-							</div>
-						</div>
-
-						<!-- widget popular posts -->
-						<div class="rounded widget">
-							<div class="text-center widget-header">
-								<h3 class="widget-title">Popular Posts</h3>
-								<img src="images/wave.svg" class="wave" alt="wave" />
-							</div>
-							<div class="widget-content">
-								<!-- post -->
-								<div class="post post-list-sm circle">
-									<div class="thumb circle">
-										<span class="number">1</span>
-										<a href="blog-single.html">
-											<div class="inner">
-												<img src="images/posts/tabs-1.jpg" alt="post-title" />
-											</div>
-										</a>
-									</div>
-									<div class="clearfix details">
-										<h6 class="my-0 post-title"><a href="blog-single.html">3 Easy Ways To Make Your iPhone Faster</a></h6>
-										<ul class="mt-1 mb-0 meta list-inline">
-											<li class="list-inline-item">29 March 2021</li>
-										</ul>
-									</div>
-								</div>
-								<!-- post -->
-								<div class="post post-list-sm circle">
-									<div class="thumb circle">
-										<span class="number">2</span>
-										<a href="blog-single.html">
-											<div class="inner">
-												<img src="images/posts/tabs-2.jpg" alt="post-title" />
-											</div>
-										</a>
-									</div>
-									<div class="clearfix details">
-										<h6 class="my-0 post-title"><a href="blog-single.html">An Incredibly Easy Method That Works For All</a></h6>
-										<ul class="mt-1 mb-0 meta list-inline">
-											<li class="list-inline-item">29 March 2021</li>
-										</ul>
-									</div>
-								</div>
-								<!-- post -->
-								<div class="post post-list-sm circle">
-									<div class="thumb circle">
-										<span class="number">3</span>
-										<a href="blog-single.html">
-											<div class="inner">
-												<img src="images/posts/tabs-3.jpg" alt="post-title" />
-											</div>
-										</a>
-									</div>
-									<div class="clearfix details">
-										<h6 class="my-0 post-title"><a href="blog-single.html">10 Ways To Immediately Start Selling Furniture</a></h6>
-										<ul class="mt-1 mb-0 meta list-inline">
-											<li class="list-inline-item">29 March 2021</li>
-										</ul>
-									</div>
-								</div>
-							</div>		
-						</div>
-
-						<!-- widget categories -->
-						<div class="rounded widget">
-							<div class="text-center widget-header">
-								<h3 class="widget-title">Explore Topics</h3>
-								<img src="images/wave.svg" class="wave" alt="wave" />
-							</div>
-							<div class="widget-content">
-								<ul class="list">
-									<li><a href="#">Lifestyle</a><span>(5)</span></li>
-									<li><a href="#">Inspiration</a><span>(2)</span></li>
-									<li><a href="#">Fashion</a><span>(4)</span></li>
-									<li><a href="#">Politic</a><span>(1)</span></li>
-									<li><a href="#">Trending</a><span>(7)</span></li>
-									<li><a href="#">Culture</a><span>(3)</span></li>
-								</ul>
-							</div>
-							
-						</div>
-
-						<!-- widget newsletter -->
-						<div class="rounded widget">
-							<div class="text-center widget-header">
-								<h3 class="widget-title">Newsletter</h3>
-								<img src="images/wave.svg" class="wave" alt="wave" />
-							</div>
-							<div class="widget-content">
-								<span class="mb-3 text-center newsletter-headline">Join 70,000 subscribers!</span>
-								<form>
-									<div class="mb-2">
-										<input class="text-center form-control w-100" placeholder="Email address…" type="email">
-									</div>
-									<button class="btn btn-default btn-full" type="submit">Sign Up</button>
-								</form>
-								<span class="mt-3 text-center newsletter-privacy">By signing up, you agree to our <a href="#">Privacy Policy</a></span>
-							</div>		
-						</div>
-
-						<!-- widget post carousel -->
-						<div class="rounded widget">
-							<div class="text-center widget-header">
-								<h3 class="widget-title">Celebration</h3>
-								<img src="images/wave.svg" class="wave" alt="wave" />
-							</div>
-							<div class="widget-content">
-								<div class="post-carousel-widget">
-									<!-- post -->
-									<div class="post post-carousel">
-										<div class="rounded thumb">
-											<a href="category.html" class="category-badge position-absolute">How to</a>
-											<a href="blog-single.html">
-												<div class="inner">
-													<img src="images/widgets/widget-carousel-1.jpg" alt="post-title" />
-												</div>
-											</a>
-										</div>
-										<h5 class="mt-4 mb-0 post-title"><a href="blog-single.html">5 Easy Ways You Can Turn Future Into Success</a></h5>
-										<ul class="mt-2 mb-0 meta list-inline">
-											<li class="list-inline-item"><a href="#">Katen Doe</a></li>
-											<li class="list-inline-item">29 March 2021</li>
-										</ul>
-									</div>
-									<!-- post -->
-									<div class="post post-carousel">
-										<div class="rounded thumb">
-											<a href="category.html" class="category-badge position-absolute">Trending</a>
-											<a href="blog-single.html">
-												<div class="inner">
-													<img src="images/widgets/widget-carousel-2.jpg" alt="post-title" />
-												</div>
-											</a>
-										</div>
-										<h5 class="mt-4 mb-0 post-title"><a href="blog-single.html">Master The Art Of Nature With These 7 Tips</a></h5>
-										<ul class="mt-2 mb-0 meta list-inline">
-											<li class="list-inline-item"><a href="#">Katen Doe</a></li>
-											<li class="list-inline-item">29 March 2021</li>
-										</ul>
-									</div>
-									<!-- post -->
-									<div class="post post-carousel">
-										<div class="rounded thumb">
-											<a href="category.html" class="category-badge position-absolute">How to</a>
-											<a href="blog-single.html">
-												<div class="inner">
-													<img src="images/widgets/widget-carousel-1.jpg" alt="post-title" />
-												</div>
-											</a>
-										</div>
-										<h5 class="mt-4 mb-0 post-title"><a href="blog-single.html">5 Easy Ways You Can Turn Future Into Success</a></h5>
-										<ul class="mt-2 mb-0 meta list-inline">
-											<li class="list-inline-item"><a href="#">Katen Doe</a></li>
-											<li class="list-inline-item">29 March 2021</li>
-										</ul>
-									</div>
-								</div>
-								<!-- carousel arrows -->
-								<div class="slick-arrows-bot">
-									<button type="button" data-role="none" class="carousel-botNav-prev slick-custom-buttons" aria-label="Previous"><i class="icon-arrow-left"></i></button>
-									<button type="button" data-role="none" class="carousel-botNav-next slick-custom-buttons" aria-label="Next"><i class="icon-arrow-right"></i></button>
-								</div>
-							</div>		
-						</div>
-
-						<!-- widget advertisement -->
-						<div class="rounded widget no-container text-md-center">
-							<span class="ads-title">- Sponsored Ad -</span>
-							<a href="#" class="widget-ads">
-								<img src="images/ads/ad-360.png" alt="Advertisement" />	
-							</a>
-						</div>
-
-						<!-- widget tags -->
-						<div class="rounded widget">
-							<div class="text-center widget-header">
-								<h3 class="widget-title">Tag Clouds</h3>
-								<img src="images/wave.svg" class="wave" alt="wave" />
-							</div>
-							<div class="widget-content">
-								<a href="#" class="tag">#Trending</a>
-								<a href="#" class="tag">#Video</a>
-								<a href="#" class="tag">#Featured</a>
-								<a href="#" class="tag">#Gallery</a>
-								<a href="#" class="tag">#Celebrities</a>
-							</div>		
-						</div>
-
-					</div>
-
-				</div>
-
-			</div>
-
-		</div>
-	</section>
-
-	<!-- instagram feed -->
-	<div class="instagram">
-		<div class="container-xl">
-			<!-- button -->
-			<a href="#" class="btn btn-default btn-instagram">@Katen on Instagram</a>
-			<!-- images -->
-			<div class="flex-wrap instagram-feed d-flex">
-				<div class="insta-item col-sm-2 col-6 col-md-2">
-					<a href="#">
-						<img src="images/insta/insta-1.jpg" alt="insta-title" />
-					</a>
-				</div>
-				<div class="insta-item col-sm-2 col-6 col-md-2">
-					<a href="#">
-						<img src="images/insta/insta-2.jpg" alt="insta-title" />
-					</a>
-				</div>
-				<div class="insta-item col-sm-2 col-6 col-md-2">
-					<a href="#">
-						<img src="images/insta/insta-3.jpg" alt="insta-title" />
-					</a>
-				</div>
-				<div class="insta-item col-sm-2 col-6 col-md-2">
-					<a href="#">
-						<img src="images/insta/insta-4.jpg" alt="insta-title" />
-					</a>
-				</div>
-				<div class="insta-item col-sm-2 col-6 col-md-2">
-					<a href="#">
-						<img src="images/insta/insta-5.jpg" alt="insta-title" />
-					</a>
-				</div>
-				<div class="insta-item col-sm-2 col-6 col-md-2">
-					<a href="#">
-						<img src="images/insta/insta-6.jpg" alt="insta-title" />
-					</a>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<!-- footer -->
-	<footer>
-		<div class="container-xl">
-			<div class="footer-inner">
-				<div class="row d-flex align-items-center gy-4">
-					<!-- copyright text -->
-					<div class="col-md-4">
-						<span class="copyright">© 2021 Katen. Template by ThemeGer.</span>
-					</div>
-
-					<!-- social icons -->
-					<div class="text-center col-md-4">
-						<ul class="mb-0 social-icons list-unstyled list-inline">
-							<li class="list-inline-item"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-							<li class="list-inline-item"><a href="#"><i class="fab fa-twitter"></i></a></li>
-							<li class="list-inline-item"><a href="#"><i class="fab fa-instagram"></i></a></li>
-							<li class="list-inline-item"><a href="#"><i class="fab fa-pinterest"></i></a></li>
-							<li class="list-inline-item"><a href="#"><i class="fab fa-medium"></i></a></li>
-							<li class="list-inline-item"><a href="#"><i class="fab fa-youtube"></i></a></li>
-						</ul>
-					</div>
-
-					<!-- go to top button -->
-					<div class="col-md-4">
-						<a href="#" id="return-to-top" class="float-md-end"><i class="icon-arrow-up"></i>Back to Top</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</footer>
-
-</div><!-- end site wrapper -->
-
-<!-- search popup area -->
-<div class="search-popup">
-	<!-- close button -->
-	<button type="button" class="btn-close" aria-label="Close"></button>
-	<!-- content -->
-	<div class="search-content">
-		<div class="text-center">
-			<h3 class="mt-0 mb-4">Press ESC to close</h3>
-		</div>
-		<!-- form -->
-		<form class="d-flex search-form">
-			<input class="form-control me-2" type="search" placeholder="Search and press enter ..." aria-label="Search">
-			<button class="btn btn-default btn-lg" type="submit"><i class="icon-magnifier"></i></button>
-		</form>
-	</div>
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
 </div>
+<!-- ./wrapper -->
 
-<!-- canvas menu -->
-<div class="canvas-menu d-flex align-items-end flex-column">
-	<!-- close button -->
-	<button type="button" class="btn-close" aria-label="Close"></button>
-
-	<!-- logo -->
-	<div class="logo">
-		<img src="images/logo.svg" alt="Katen" />
-	</div>
-
-	<!-- menu -->
-	<nav>
-		<ul class="vertical-menu">
-			<li class="active">
-				<a href="index.html">Home</a>
-				<ul class="submenu">
-					<li><a href="index.html">Magazine</a></li>
-					<li><a href="personal.html">Personal</a></li>
-					<li><a href="personal-alt.html">Personal Alt</a></li>
-					<li><a href="minimal.html">Minimal</a></li>
-					<li><a href="classic.html">Classic</a></li>
-				</ul>
-			</li>
-			<li><a href="category.html">Lifestyle</a></li>
-			<li><a href="category.html">Inspiration</a></li>
-			<li>
-				<a href="#">Pages</a>
-				<ul class="submenu">
-					<li><a href="category.html">Category</a></li>
-					<li><a href="blog-single.html">Blog Single</a></li>
-					<li><a href="blog-single-alt.html">Blog Single Alt</a></li>
-					<li><a href="about.html">About</a></li>
-					<li><a href="contact.html">Contact</a></li>
-				</ul>
-			</li>
-			<li><a href="contact.html">Contact</a></li>
-		</ul>
-	</nav>
-
-	<!-- social icons -->
-	<ul class="mt-auto mb-0 social-icons list-unstyled list-inline w-100">
-		<li class="list-inline-item"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-		<li class="list-inline-item"><a href="#"><i class="fab fa-twitter"></i></a></li>
-		<li class="list-inline-item"><a href="#"><i class="fab fa-instagram"></i></a></li>
-		<li class="list-inline-item"><a href="#"><i class="fab fa-pinterest"></i></a></li>
-		<li class="list-inline-item"><a href="#"><i class="fab fa-medium"></i></a></li>
-		<li class="list-inline-item"><a href="#"><i class="fab fa-youtube"></i></a></li>
-	</ul>
-</div>
-
-<!-- JAVA SCRIPTS -->
-<script src="js/jquery.min.js"></script>
-<script src="js/popper.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/slick.min.js"></script>
-<script src="js/jquery.sticky-sidebar.min.js"></script>
-<script src="js/custom.js"></script>
-
+<!-- jQuery -->
+<script src="{{ asset('AdminLTE/plugins/jquery/jquery.min.js')}}"></script>
+<!-- jQuery UI 1.11.4 -->
+<script src="{{ asset('AdminLTE/plugins/jquery-ui/jquery-ui.min.js')}}"></script>
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<script>
+  $.widget.bridge('uibutton', $.ui.button)
+</script>
+<!-- Bootstrap 4 -->
+<script src="{{ asset('AdminLTE/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+<!-- ChartJS -->
+<script src="{{ asset('AdminLTE/plugins/chart.js')}}/Chart.min.js')}}"></script>
+<!-- Sparkline -->
+<script src="{{ asset('AdminLTE/plugins/sparklines/sparkline.js')}}"></script>
+<!-- JQVMap -->
+<script src="{{ asset('AdminLTE/plugins/jqvmap/jquery.vmap.min.js')}}"></script>
+<script src="{{ asset('AdminLTE/plugins/jqvmap/maps/jquery.vmap.usa.js')}}"></script>
+<!-- jQuery Knob Chart -->
+<script src="{{ asset('AdminLTE/plugins/jquery-knob/jquery.knob.min.js')}}"></script>
+<!-- daterangepicker -->
+<script src="{{ asset('AdminLTE/plugins/moment/moment.min.js')}}"></script>
+<script src="{{ asset('AdminLTE/plugins/daterangepicker/daterangepicker.js')}}"></script>
+<!-- Tempusdominus Bootstrap 4 -->
+<script src="{{ asset('AdminLTE/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js')}}"></script>
+<!-- Summernote -->
+<script src="{{ asset('AdminLTE/plugins/summernote/summernote-bs4.min.js')}}"></script>
+<!-- overlayScrollbars -->
+<script src="{{ asset('AdminLTE/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js')}}"></script>
+<!-- AdminLTE App -->
+<script src="{{ asset('AdminLTE/dist/js/adminlte.js')}}"></script>
+<!-- AdminLTE for demo purposes -->
+{{-- <script src="{{ asset('AdminLTE/dist/js/demo.js')}}"></script> --}}
+<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+<script src="{{ asset('AdminLTE/dist/js/pages/dashboard.js')}}"></script>
 </body>
 </html>

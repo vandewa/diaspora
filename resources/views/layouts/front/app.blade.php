@@ -3,8 +3,8 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Katen - Minimal Blog & Magazine HTML Theme</title>
-    <meta name="description" content="Katen - Minimal Blog & Magazine HTML Theme">
+    <title>Diaspora Wonosobo</title>
+    <meta name="description" content="Diaspora Wonosobo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('katen/images/favicon.png') }}">
 
@@ -69,7 +69,7 @@
 
                     <div class="col-4 d-none d-md-block d-lg-block">
                         <!-- social icons -->
-                        <ul class="social-icons list-unstyled list-inline mb-0">
+                        <ul class="mb-0 social-icons list-unstyled list-inline">
                             <li class="list-inline-item"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
                             <li class="list-inline-item"><a href="#"><i class="fab fa-twitter"></i></a></li>
                             <li class="list-inline-item"><a href="#"><i class="fab fa-instagram"></i></a></li>
@@ -77,7 +77,7 @@
                         </ul>
                     </div>
 
-                    <div class="col-md-4 col-sm-12 col-xs-12 text-center">
+                    <div class="text-center col-md-4 col-sm-12 col-xs-12">
                         <!-- site logo -->
                         <a class="navbar-brand" href="personal-alt.html"><img src="{{ asset('a.png') }}" alt="logo"
                                 width="90" /></a>
@@ -87,13 +87,13 @@
 
                     <div class="col-md-4 col-sm-12 col-xs-12">
                         <!-- header buttons -->
-                        <div class="header-buttons float-md-end mt-4 mt-md-0">
+                        <div class="mt-4 header-buttons float-md-end mt-md-0">
                             <button class="search icon-button">
                                 <i class="icon-magnifier"></i>
                             </button>
-                            <button class="burger-menu icon-button ms-2 float-end float-md-none">
+                            {{-- <button class="burger-menu icon-button ms-2 float-end float-md-none">
                                 <span class="burger-icon"></span>
-                            </button>
+                            </button> --}}
                         </div>
                     </div>
 
@@ -107,16 +107,16 @@
                         <!-- menus -->
                         <ul class="navbar-nav">
                             <li class="nav-item active">
-                                <a class="nav-link" href="category.html">Beranda</a>
+                                <a class="nav-link" href="#berandaSection">Beranda</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="category.html">Visi Misi</a>
+                                <a class="nav-link" href="#visimisiSection">Visi Misi</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="category.html">Program</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="category.html">Kontak</a>
+                                <a class="nav-link" href="#kontakSection">Kontak</a>
                             </li>
                         </ul>
                     </div>
@@ -126,13 +126,13 @@
         </header>
 
         <!-- section hero -->
-        <section class="hero data-bg-image d-flex align-items-center" data-bg-image="images/other/hero.jpg">
+        <section class="hero data-bg-image d-flex align-items-center" data-bg-image="images/other/hero.jpg" id="berandaSection">
             <div class="container-xl">
                 <!-- call to action -->
-                <div class="cta text-center">
+                <div class="text-center cta">
                     <h2 class="mt-0 mb-4">Yayasan Diaspora Wonosobo</h2>
                     <p class="mt-0 mb-4">Wadah perantau Wonosobo yang tersebar di luar kota, luar pulau dan luar negeri,
-                        sebagai wadah pemersatu untuk saling berinteraksi,saling asah, asih, asuh dan saling melindungi
+                        sebagai wadah pemersatu untuk saling berinteraksi, saling asah, asih, asuh dan saling melindungi
                         yang terlembagakan dengan tujuan untuk memperkuat persatuan dan berperan secara kolaboratif
                         dalam membangun Wonosobo.</p>
                 </div>
@@ -383,17 +383,18 @@
                         <!-- sidebar -->
                         <div class="sidebar">
                             <!-- widget about -->
-                            <div class="rounded widget">
+                            <div class="rounded widget" id="visimisiSection">
                                 <div class="text-center widget-about data-bg-image"
                                     data-bg-image="{{ asset('katen/images/map-bg.png') }}">
-                                    <img src="{{ asset('katen/images/logo.svg') }}" alt="logo" class="mb-4" />
+                                    {{-- <img src="{{ asset('katen/images/logo.svg') }}" alt="logo" class="mb-4" /> --}}
+                                    <h4>Visi Diaspora<span class="dot">.</span></h4>
                                     <p class="mb-4">Terwujudnya Wonosobo yang maju, sejahtera dan memiliki daya
                                         saing
                                         tinggi melalui peran diaspora </p>
                                     <!-- Button trigger modal -->
                                     <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal"
                                         data-bs-target="#staticBackdrop">
-                                        Misi Diaspora Wonosobo
+                                        Misi Diaspora
                                     </button>
                                 </div>
                             </div>
@@ -466,46 +467,57 @@
             </div>
         </section>
 
-        <!-- instagram feed -->
-        <div class="instagram" id="aboutSection">
+        <!-- section main content -->
+        <section class="main-content">
             <div class="container-xl">
-                <!-- button -->
-                <a href="#" class="btn btn-default btn-instagram">@Katen on Instagram</a>
-                <!-- images -->
-                <div class="flex-wrap instagram-feed d-flex">
-                    <div class="insta-item col-sm-2 col-6 col-md-2">
-                        <a href="#">
-                            <img src="{{ asset('katen/images/insta/insta-1.jpg') }}" alt="insta-title" />
-                        </a>
-                    </div>
-                    <div class="insta-item col-sm-2 col-6 col-md-2">
-                        <a href="#">
-                            <img src="{{ asset('katen/images/insta/insta-2.jpg') }}" alt="insta-title" />
-                        </a>
-                    </div>
-                    <div class="insta-item col-sm-2 col-6 col-md-2">
-                        <a href="#">
-                            <img src="{{ asset('katen/images/insta/insta-3.jpg') }}" alt="insta-title" />
-                        </a>
-                    </div>
-                    <div class="insta-item col-sm-2 col-6 col-md-2">
-                        <a href="#">
-                            <img src="{{ asset('katen/images/insta/insta-4.jpg') }}" alt="insta-title" />
-                        </a>
-                    </div>
-                    <div class="insta-item col-sm-2 col-6 col-md-2">
-                        <a href="#">
-                            <img src="{{ asset('katen/images/insta/insta-5.jpg') }}" alt="insta-title" />
-                        </a>
-                    </div>
-                    <div class="insta-item col-sm-2 col-6 col-md-2">
-                        <a href="#">
-                            <img src="{{ asset('katen/images/insta/insta-6.jpg') }}" alt="insta-title" />
-                        </a>
-                    </div>
+                <div class="section-header" id="kontakSection">
+                    <h3 class="section-title">Kontak</h3>
+                    <img src="{{ asset('katen/images/wave.svg') }}" class="wave" alt="wave" />
                 </div>
+
+                <div class="row">
+                            
+                    <div class="col-md-4">
+                        <!-- contact info item -->
+                        <div class="rounded contact-item bordered d-flex align-items-center">
+                            <span class="icon icon-phone"></span>
+                            <div class="details">
+                                <h3 class="mt-0 mb-0">Telepon</h3>
+                                <p class="mb-0">05213605366 /085226699313</p>
+                            </div>
+                        </div>
+                        <div class="spacer d-md-none d-lg-none" data-height="30"></div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <!-- contact info item -->
+                        <div class="rounded contact-item bordered d-flex align-items-center">
+                            <span class="icon icon-envelope-open"></span>
+                            <div class="details">
+                                <h3 class="mt-0 mb-0">E-Mail</h3>
+                                <p class="mb-0">hello@example.com</p>
+                            </div>
+                        </div>
+                        <div class="spacer d-md-none d-lg-none" data-height="30"></div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <!-- contact info item -->
+                        <div class="rounded contact-item bordered d-flex align-items-center">
+                            <span class="icon icon-map"></span>
+                            <div class="details">
+                                <h3 class="mt-0 mb-0">Alamat</h3>
+                                <p class="mb-0">Jl. Dieng Km.03 No. 79B Kalianget</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="spacer" data-height="50"></div>
+                
             </div>
-        </div>
+        </section>
 
         <!-- footer -->
         <footer>
@@ -514,7 +526,7 @@
                     <div class="row d-flex align-items-center gy-4">
                         <!-- copyright text -->
                         <div class="col-md-4">
-                            <span class="copyright">© 2021 Katen. Template by ThemeGer.</span>
+                            <span class="copyright">© 2021 Diaspora Wonosobo by Devandewa</span>
                         </div>
 
                         <!-- social icons -->
@@ -525,10 +537,6 @@
                                 <li class="list-inline-item"><a href="#"><i class="fab fa-twitter"></i></a>
                                 </li>
                                 <li class="list-inline-item"><a href="#"><i class="fab fa-instagram"></i></a>
-                                </li>
-                                <li class="list-inline-item"><a href="#"><i class="fab fa-pinterest"></i></a>
-                                </li>
-                                <li class="list-inline-item"><a href="#"><i class="fab fa-medium"></i></a></li>
                                 <li class="list-inline-item"><a href="#"><i class="fab fa-youtube"></i></a>
                                 </li>
                             </ul>
