@@ -18,12 +18,12 @@ class UserSeeder extends Seeder
         $data = [
             [
                 'id' => '1',
-                'name' => 'Superadmin',
-                'email' => 'superadmin@app.com',
+                'name' => 'Admin',
+                'email' => 'admin@app.com',
                 'password' => bcrypt('password'),
             ],
         ];
-        
+
         foreach ($data as $datum) {
             User::create($datum);
         }
