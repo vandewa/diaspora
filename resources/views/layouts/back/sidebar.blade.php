@@ -35,7 +35,8 @@
                       </a>
                   </li>
                   <li class="nav-item">
-                      <a href="#" class="nav-link">
+                      <a href="{{ route('berita.index') }}"
+                          class="nav-link {{ Request::segment(1) == 'berita' ? 'active' : '' }}">
                           <i class="nav-icon fas fa-newspaper"></i>
                           <p>
                               Berita

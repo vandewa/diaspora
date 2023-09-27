@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\FileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InformasiUmumController;
@@ -20,6 +22,8 @@ use Illuminate\Support\Facades\File;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('index');
+Route::get('/news/{id}', [HomeController::class, 'berita'])->name('detail.berita');
+
 //dokumentasi template
 Route::get('docs', function () {
     return File::get(public_path() . '/documentation.html');
@@ -41,5 +45,9 @@ Route::middleware([
     Route::get('ganti-password', [InformasiUmumController::class, 'gantiPassword'])->name('password');
     Route::post('/ganti-password', [DashboardController::class, 'gantiPassword'])->name('ganti.password');
     Route::resource('pendiri', PendiriController::class);
+    Route::post('sendCheckbox', [BeritaController::class, 'changeAccess']);
+    Route::get('/berita/checkSlug', [BeritaController::class, 'checkSlug']);
+    Route::resource('berita', BeritaController::class);
+    Route::resource('file_image', FileController::class);
 
 });

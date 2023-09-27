@@ -3,10 +3,13 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <title>Diaspora Wonosobo</title>
     <meta name="description" content="Diaspora Wonosobo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('katen/images/favicon.png') }}">
+
 
     <!-- STYLES -->
     <link rel="stylesheet" href="{{ asset('katen/css/bootstrap.min.css') }}" type="text/css" media="all">
@@ -70,27 +73,32 @@
                     <div class="col-4 d-none d-md-block d-lg-block">
                         <!-- social icons -->
                         <ul class="mb-0 social-icons list-unstyled list-inline">
-                            <li class="list-inline-item"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                            <li class="list-inline-item"><a href="#"><i class="fab fa-twitter"></i></a></li>
-                            <li class="list-inline-item"><a href="#"><i class="fab fa-instagram"></i></a></li>
-                            <li class="list-inline-item"><a href="#"><i class="fab fa-youtube"></i></a></li>
+                            <li class="list-inline-item"><a href="{{ $data->fb ?? '' }}" target="_blank"><i
+                                        class="fab fa-facebook-f"></i></a></li>
+                            <li class="list-inline-item"><a href="{{ $data->twitter ?? '' }}" target="_blank"><i
+                                        class="fab fa-twitter"></i></a></li>
+                            <li class="list-inline-item"><a href="{{ $data->ig ?? '' }}" target="_blank"><i
+                                        class="fab fa-instagram"></i></a></li>
+                            <li class="list-inline-item"><a href="{{ $data->yt ?? '' }}" target="_blank"><i
+                                        class="fab fa-youtube"></i></a></li>
                         </ul>
                     </div>
 
                     <div class="text-center col-md-4 col-sm-12 col-xs-12">
                         <!-- site logo -->
-                        <a class="navbar-brand" href="personal-alt.html"><img src="{{ asset('a.png') }}" alt="logo"
-                                width="90" /></a>
-                        <a href="personal-alt.html" class="d-block text-logo">Diaspora<span class="dot">.</span></a>
+                        <a class="navbar-brand" href="{{ route('index') }}"><img src="{{ asset('a.png') }}"
+                                alt="logo" width="90" /></a>
+                        <a href="{{ route('index') }}" class="d-block text-logo">Diaspora<span
+                                class="dot">.</span></a>
                         <span class="slogan d-block">Yayasan Diaspora Wonosobo</span>
                     </div>
 
                     <div class="col-md-4 col-sm-12 col-xs-12">
                         <!-- header buttons -->
                         <div class="mt-4 header-buttons float-md-end mt-md-0">
-                            <button class="search icon-button">
-                                <i class="icon-magnifier"></i>
-                            </button>
+                            <a class="search icon-button" href="{{ url('login') }}">
+                                <i class="icon-user"></i>
+                            </a>
                             {{-- <button class="burger-menu icon-button ms-2 float-end float-md-none">
                                 <span class="burger-icon"></span>
                             </button> --}}
@@ -149,6 +157,7 @@
         </section>
 
         <!-- section main content -->
+        <div id="de"></div>
         <section class="main-content">
             <div class="container-xl">
 
@@ -163,215 +172,74 @@
 
                         <div class="rounded padding-30 bordered">
 
-                            <div class="row">
+                            <div class="row" id="pagenya">
+                                @foreach ($berita as $b)
+                                    <div class="col-md-12 col-sm-6">
+                                        <!-- post -->
+                                        <div class="clearfix post post-list">
+                                            <div class="rounded thumb">
+                                                <span class="post-format-sm">
+                                                    <i class="icon-picture"></i>
+                                                </span>
+                                                <a href="{{ route('detail.berita', $b->slug) }}">
+                                                    <div class="inner">
+                                                        <img src="{{ asset($b->sampul->preview_image ?? '') }}"
+                                                            alt="post-title"style="height:100%;width:100%;object-fit:cover" />
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <div class="details">
+                                                <ul class="mb-3 meta list-inline">
+                                                    <li class="list-inline-item">
+                                                        <a href="#">
+                                                            <img src="{{ asset('a.png') }}" alt="author"
+                                                                style="height: 20px;"class="mr-3" />
+                                                            {{ $b->dibuat->name ?? '' }}
+                                                        </a>
+                                                    </li>
+                                                    <li class="list-inline-item">
+                                                        {{ \Carbon\Carbon::createFromTimeStamp(strtotime($b->created_at))->isoFormat('D MMMM Y') }}
+                                                    </li>
+                                                </ul>
+                                                <h5 class="post-title"><a
+                                                        href="{{ route('detail.berita', $b->slug) }}">{{ $b->judul ?? '' }}</a>
+                                                </h5>
+                                                <div class="clearfix post-bottom d-flex align-items-center">
+                                                    <div class="social-share me-auto">
+                                                        <button class="toggle-button icon-share"></button>
+                                                        <ul class="mb-0 icons list-unstyled list-inline">
+                                                            <li class="list-inline-item"><a
+                                                                    href="https://www.facebook.com/sharer/sharer.php?u={{ url('/news/' . $b->slug) }}"
+                                                                    target="_blank"><i
+                                                                        class="fab fa-facebook-f"></i></a></li>
+                                                            <li class="list-inline-item"><a
+                                                                    href="https://twitter.com/intent/tweet?url={{ url('/news/' . $b->slug) }}"
+                                                                    target="_blank"><i class="fab fa-twitter"></i></a>
+                                                            </li>
 
-                                <div class="col-md-12 col-sm-6">
-                                    <!-- post -->
-                                    <div class="clearfix post post-list">
-                                        <div class="rounded thumb">
-                                            <span class="post-format-sm">
-                                                <i class="icon-picture"></i>
-                                            </span>
-                                            <a href="blog-single.html">
-                                                <div class="inner">
-                                                    <img src="{{ asset('katen/images/posts/latest-sm-1.jpg') }}"
-                                                        alt="post-title" />
-                                                </div>
-                                            </a>
-                                        </div>
-                                        <div class="details">
-                                            <ul class="mb-3 meta list-inline">
-                                                <li class="list-inline-item"><a href="#"><img
-                                                            src="{{ asset('katen/images/other/author-sm.png') }}"
-                                                            class="author" alt="author" />Katen Doe</a></li>
-                                                <li class="list-inline-item"><a href="#">Trending</a></li>
-                                                <li class="list-inline-item">29 March 2021</li>
-                                            </ul>
-                                            <h5 class="post-title"><a href="blog-single.html">The Next 60 Things To
-                                                    Immediately Do About Building</a></h5>
-                                            <p class="mb-0 excerpt">A wonderful serenity has taken possession of my
-                                                entire soul, like these sweet mornings</p>
-                                            <div class="clearfix post-bottom d-flex align-items-center">
-                                                <div class="social-share me-auto">
-                                                    <button class="toggle-button icon-share"></button>
-                                                    <ul class="mb-0 icons list-unstyled list-inline">
-                                                        <li class="list-inline-item"><a href="#"><i
-                                                                    class="fab fa-facebook-f"></i></a></li>
-                                                        <li class="list-inline-item"><a href="#"><i
-                                                                    class="fab fa-twitter"></i></a></li>
-                                                        <li class="list-inline-item"><a href="#"><i
-                                                                    class="fab fa-linkedin-in"></i></a></li>
-                                                        <li class="list-inline-item"><a href="#"><i
-                                                                    class="fab fa-pinterest"></i></a></li>
-                                                        <li class="list-inline-item"><a href="#"><i
-                                                                    class="fab fa-telegram-plane"></i></a></li>
-                                                        <li class="list-inline-item"><a href="#"><i
-                                                                    class="far fa-envelope"></i></a></li>
-                                                    </ul>
-                                                </div>
-                                                <div class="more-button float-end">
-                                                    <a href="blog-single.html"><span class="icon-options"></span></a>
+                                                            <li class="list-inline-item"><a
+                                                                    href="https://api.whatsapp.com/send?text={{ url('/news/' . $b->slug) }}"
+                                                                    target="_blank"><i
+                                                                        class="fab fa-whatsapp"></i></a></li>
+
+                                                        </ul>
+                                                    </div>
+                                                    <div class="more-button float-end">
+                                                        <a href="{{ route('detail.berita', $b->slug) }}"><span
+                                                                class="icon-options"></span></a>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-
-                                <div class="col-md-12 col-sm-6">
-                                    <!-- post -->
-                                    <div class="clearfix post post-list">
-                                        <div class="rounded thumb">
-                                            <a href="blog-single.html">
-                                                <div class="inner">
-                                                    <img src="{{ asset('katen/images/posts/latest-sm-2.jpg') }}"
-                                                        alt="post-title" />
-                                                </div>
-                                            </a>
-                                        </div>
-                                        <div class="details">
-                                            <ul class="mb-3 meta list-inline">
-                                                <li class="list-inline-item"><a href="#"><img
-                                                            src="{{ asset('katen/images/other/author-sm.png') }}"
-                                                            class="author" alt="author" />Katen Doe</a></li>
-                                                <li class="list-inline-item"><a href="#">Lifestyle</a></li>
-                                                <li class="list-inline-item">29 March 2021</li>
-                                            </ul>
-                                            <h5 class="post-title"><a href="blog-single.html">Master The Art Of Nature
-                                                    With These 7 Tips</a></h5>
-                                            <p class="mb-0 excerpt">A wonderful serenity has taken possession of my
-                                                entire soul, like these sweet mornings</p>
-                                            <div class="clearfix post-bottom d-flex align-items-center">
-                                                <div class="social-share me-auto">
-                                                    <button class="toggle-button icon-share"></button>
-                                                    <ul class="mb-0 icons list-unstyled list-inline">
-                                                        <li class="list-inline-item"><a href="#"><i
-                                                                    class="fab fa-facebook-f"></i></a></li>
-                                                        <li class="list-inline-item"><a href="#"><i
-                                                                    class="fab fa-twitter"></i></a></li>
-                                                        <li class="list-inline-item"><a href="#"><i
-                                                                    class="fab fa-linkedin-in"></i></a></li>
-                                                        <li class="list-inline-item"><a href="#"><i
-                                                                    class="fab fa-pinterest"></i></a></li>
-                                                        <li class="list-inline-item"><a href="#"><i
-                                                                    class="fab fa-telegram-plane"></i></a></li>
-                                                        <li class="list-inline-item"><a href="#"><i
-                                                                    class="far fa-envelope"></i></a></li>
-                                                    </ul>
-                                                </div>
-                                                <div class="more-button float-end">
-                                                    <a href="blog-single.html"><span class="icon-options"></span></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-12 col-sm-6">
-                                    <!-- post -->
-                                    <div class="clearfix post post-list">
-                                        <div class="rounded thumb">
-                                            <span class="post-format-sm">
-                                                <i class="icon-camrecorder"></i>
-                                            </span>
-                                            <a href="blog-single.html">
-                                                <div class="inner">
-                                                    <img src="{{ asset('katen/images/posts/latest-sm-3.jpg') }}"
-                                                        alt="post-title" />
-                                                </div>
-                                            </a>
-                                        </div>
-                                        <div class="details">
-                                            <ul class="mb-3 meta list-inline">
-                                                <li class="list-inline-item"><a href="#"><img
-                                                            src="{{ asset('katen/images/other/author-sm.png') }}"
-                                                            class="author" alt="author" />Katen Doe</a></li>
-                                                <li class="list-inline-item"><a href="#">Fashion</a></li>
-                                                <li class="list-inline-item">29 March 2021</li>
-                                            </ul>
-                                            <h5 class="post-title"><a href="blog-single.html">Facts About Business
-                                                    That Will Help You Success</a></h5>
-                                            <p class="mb-0 excerpt">A wonderful serenity has taken possession of my
-                                                entire soul, like these sweet mornings</p>
-                                            <div class="clearfix post-bottom d-flex align-items-center">
-                                                <div class="social-share me-auto">
-                                                    <button class="toggle-button icon-share"></button>
-                                                    <ul class="mb-0 icons list-unstyled list-inline">
-                                                        <li class="list-inline-item"><a href="#"><i
-                                                                    class="fab fa-facebook-f"></i></a></li>
-                                                        <li class="list-inline-item"><a href="#"><i
-                                                                    class="fab fa-twitter"></i></a></li>
-                                                        <li class="list-inline-item"><a href="#"><i
-                                                                    class="fab fa-linkedin-in"></i></a></li>
-                                                        <li class="list-inline-item"><a href="#"><i
-                                                                    class="fab fa-pinterest"></i></a></li>
-                                                        <li class="list-inline-item"><a href="#"><i
-                                                                    class="fab fa-telegram-plane"></i></a></li>
-                                                        <li class="list-inline-item"><a href="#"><i
-                                                                    class="far fa-envelope"></i></a></li>
-                                                    </ul>
-                                                </div>
-                                                <div class="more-button float-end">
-                                                    <a href="blog-single.html"><span class="icon-options"></span></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-12 col-sm-6">
-                                    <!-- post -->
-                                    <div class="clearfix post post-list">
-                                        <div class="rounded thumb">
-                                            <a href="blog-single.html">
-                                                <div class="inner">
-                                                    <img src="{{ asset('katen/images/posts/latest-sm-4.jpg') }}"
-                                                        alt="post-title" />
-                                                </div>
-                                            </a>
-                                        </div>
-                                        <div class="details">
-                                            <ul class="mb-3 meta list-inline">
-                                                <li class="list-inline-item"><a href="#"><img
-                                                            src="{{ asset('katen/images/other/author-sm.png') }}"
-                                                            class="author" alt="author" />Katen Doe</a></li>
-                                                <li class="list-inline-item"><a href="#">Politic</a></li>
-                                                <li class="list-inline-item">29 March 2021</li>
-                                            </ul>
-                                            <h5 class="post-title"><a href="blog-single.html">Your Light Is About To
-                                                    Stop Being Relevant</a></h5>
-                                            <p class="mb-0 excerpt">A wonderful serenity has taken possession of my
-                                                entire soul, like these sweet mornings</p>
-                                            <div class="clearfix post-bottom d-flex align-items-center">
-                                                <div class="social-share me-auto">
-                                                    <button class="toggle-button icon-share"></button>
-                                                    <ul class="mb-0 icons list-unstyled list-inline">
-                                                        <li class="list-inline-item"><a href="#"><i
-                                                                    class="fab fa-facebook-f"></i></a></li>
-                                                        <li class="list-inline-item"><a href="#"><i
-                                                                    class="fab fa-twitter"></i></a></li>
-                                                        <li class="list-inline-item"><a href="#"><i
-                                                                    class="fab fa-linkedin-in"></i></a></li>
-                                                        <li class="list-inline-item"><a href="#"><i
-                                                                    class="fab fa-pinterest"></i></a></li>
-                                                        <li class="list-inline-item"><a href="#"><i
-                                                                    class="fab fa-telegram-plane"></i></a></li>
-                                                        <li class="list-inline-item"><a href="#"><i
-                                                                    class="far fa-envelope"></i></a></li>
-                                                    </ul>
-                                                </div>
-                                                <div class="more-button float-end">
-                                                    <a href="blog-single.html"><span class="icon-options"></span></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                @endforeach
 
                             </div>
                             <!-- load more button -->
-                            <div class="text-center">
+                            {{-- <div class="text-center">
                                 <button class="btn btn-simple">Load More</button>
-                            </div>
+                            </div> --}}
+                            {{ $berita->links() }}
 
                         </div>
 
@@ -413,33 +281,20 @@
                                                 data-bs-slide-to="2" aria-label="Slide 3"></button>
                                         </div>
                                         <div class="carousel-inner">
-                                            <div class="carousel-item active">
-                                                <center>
-                                                    <h5>Ketua</h5>
-                                                </center>
-                                                <img src="{{ asset('a.png') }}" class="d-block w-100"
-                                                    alt="...">
-                                                <div class="carousel-caption d-none d-md-block">
-                                                    <span class="badge bg-primary"
-                                                        style="font-size: 15px;">Farid</span>
+                                            @foreach ($pendiri as $index => $list)
+                                                <div
+                                                    class="carousel-item @if ($index == 0) active @endif">
+                                                    <center>
+                                                        <h5>{{ $list->jabatan ?? '' }}</h5>
+                                                    </center>
+                                                    <img src="{{ $list->preview_image }}" class="d-block w-100"
+                                                        style="max-height: 300px;">
+                                                    <div class="carousel-caption d-none d-md-block">
+                                                        <span class="badge bg-danger"
+                                                            style="font-size: 15px;">{{ $list->nama ?? '' }}</span>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="carousel-item">
-                                                <img src="{{ asset('a.png') }}" class="d-block w-100"
-                                                    alt="...">
-                                                <div class="carousel-caption d-none d-md-block">
-                                                    <h5>Tyovan Ari</h5>
-                                                    <p>Ketua Umum</p>
-                                                </div>
-                                            </div>
-                                            <div class="carousel-item">
-                                                <img src="{{ asset('a.png') }}" class="d-block w-100"
-                                                    alt="...">
-                                                <div class="carousel-caption d-none d-md-block">
-                                                    <h5>Third slide label</h5>
-                                                    <p>Some representative placeholder content for the third slide.</p>
-                                                </div>
-                                            </div>
+                                            @endforeach
                                         </div>
                                         <button class="carousel-control-prev" type="button"
                                             data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
@@ -516,107 +371,9 @@
         </section>
 
         <!-- footer -->
-        <footer>
-            <div class="container-xl">
-                <div class="footer-inner">
-                    <div class="row d-flex align-items-center gy-4">
-                        <!-- copyright text -->
-                        <div class="col-md-4">
-                            <span class="copyright">© 2021 Diaspora Wonosobo by Devandewa</span>
-                        </div>
-
-                        <!-- social icons -->
-                        <div class="text-center col-md-4">
-                            <ul class="mb-0 social-icons list-unstyled list-inline">
-                                <li class="list-inline-item"><a href="#"><i class="fab fa-facebook-f"></i></a>
-                                </li>
-                                <li class="list-inline-item"><a href="#"><i class="fab fa-twitter"></i></a>
-                                </li>
-                                <li class="list-inline-item"><a href="#"><i class="fab fa-instagram"></i></a>
-                                <li class="list-inline-item"><a href="#"><i class="fab fa-youtube"></i></a>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <!-- go to top button -->
-                        <div class="col-md-4">
-                            <a href="#" id="return-to-top" class="float-md-end"><i
-                                    class="icon-arrow-up"></i>Back to Top</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </footer>
+        @include('home.footer')
 
     </div><!-- end site wrapper -->
-
-    <!-- search popup area -->
-    <div class="search-popup">
-        <!-- close button -->
-        <button type="button" class="btn-close" aria-label="Close"></button>
-        <!-- content -->
-        <div class="search-content">
-            <div class="text-center">
-                <h3 class="mt-0 mb-4">Press ESC to close</h3>
-            </div>
-            <!-- form -->
-            <form class="d-flex search-form">
-                <input class="form-control me-2" type="search" placeholder="Search and press enter ..."
-                    aria-label="Search">
-                <button class="btn btn-default btn-lg" type="submit"><i class="icon-magnifier"></i></button>
-            </form>
-        </div>
-    </div>
-
-    <!-- canvas menu -->
-    <div class="canvas-menu d-flex align-items-end flex-column">
-        <!-- close button -->
-        <button type="button" class="btn-close" aria-label="Close"></button>
-
-        <!-- logo -->
-        <div class="logo">
-            <img src="{{ asset('katen/images/logo.svg') }}" alt="Katen" />
-        </div>
-
-        <!-- menu -->
-        <nav>
-            <ul class="vertical-menu">
-                <li class="active">
-                    <a href="index.html">Home</a>
-                    <ul class="submenu">
-                        <li><a href="index.html">Magazine</a></li>
-                        <li><a href="personal.html">Personal</a></li>
-                        <li><a href="personal-alt.html">Personal Alt</a></li>
-                        <li><a href="minimal.html">Minimal</a></li>
-                        <li><a href="classic.html">Classic</a></li>
-                    </ul>
-                </li>
-                <li><a href="category.html">Lifestyle</a></li>
-                <li><a href="category.html">Inspiration</a></li>
-                <li>
-                    <a href="#">Pages</a>
-                    <ul class="submenu">
-                        <li><a href="category.html">Category</a></li>
-                        <li><a href="blog-single.html">Blog Single</a></li>
-                        <li><a href="blog-single-alt.html">Blog Single Alt</a></li>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                    </ul>
-                </li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
-
-        <!-- social icons -->
-        <ul class="mt-auto mb-0 social-icons list-unstyled list-inline w-100">
-            <li class="list-inline-item"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-            <li class="list-inline-item"><a href="#"><i class="fab fa-twitter"></i></a></li>
-            <li class="list-inline-item"><a href="#"><i class="fab fa-instagram"></i></a></li>
-            <li class="list-inline-item"><a href="#"><i class="fab fa-pinterest"></i></a></li>
-            <li class="list-inline-item"><a href="#"><i class="fab fa-medium"></i></a></li>
-            <li class="list-inline-item"><a href="#"><i class="fab fa-youtube"></i></a></li>
-        </ul>
-    </div>
 
     <!-- Modal -->
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
@@ -644,7 +401,28 @@
     <script src="{{ asset('katen/js/slick.min.js') }}"></script>
     <script src="{{ asset('katen/js/jquery.sticky-sidebar.min.js') }}"></script>
     <script src="{{ asset('katen/js/custom.js') }}"></script>
+    <script>
+        $(document).ready(function() {
+            // Fungsi untuk mendapatkan nilai dari parameter 'page' dalam URL
+            function getPageParameter() {
+                var urlParams = new URLSearchParams(window.location.search);
+                return urlParams.get('page');
+            }
 
+            // Menggunakan fungsi getPageParameter untuk mendapatkan nilai parameter 'page'
+            var pageValue = getPageParameter();
+
+            // Mengecek jika parameter 'page' ada dan memiliki nilai
+            if (pageValue !== null) {
+                window.onload = function() {
+                    var el = document.getElementById('de');
+                    el.scrollIntoView(true);
+                }
+                // Lakukan tindakan lain sesuai kebutuhan di sini
+            }
+
+        });
+    </script>
 </body>
 
 </html>
