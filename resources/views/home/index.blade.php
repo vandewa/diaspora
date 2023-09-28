@@ -8,7 +8,7 @@
     <title>Diaspora Wonosobo</title>
     <meta name="description" content="Diaspora Wonosobo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('katen/images/favicon.png') }}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('favicon_io/favicon.ico') }}">
 
 
     <!-- STYLES -->
