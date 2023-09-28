@@ -109,7 +109,7 @@
                                 <a class="nav-link" href="{{ route('index') }}">Visi Misi</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('index') }}">Program</a>
+                                <a class="nav-link" href="{{ route('index') }}">Program Kerja</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('index') }}">Kontak</a>

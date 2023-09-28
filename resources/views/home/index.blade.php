@@ -149,7 +149,7 @@
                                 <a class="nav-link" href="#visimisiSection">Visi Misi</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="category.html">Program</a>
+                                <a class="nav-link" href="#programSection">Program Kerja</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#kontakSection">Kontak</a>
@@ -272,6 +272,7 @@
                         </div>
 
                     </div>
+
                     <div class="col-lg-4">
 
                         <!-- sidebar -->
@@ -340,13 +341,142 @@
                         </div>
 
                     </div>
-
                 </div>
 
             </div>
         </section>
 
+
         <!-- section main content -->
+        <section class="main-content" id="programSection">
+            <div class="container-xl">
+                <div class="section-header" id="kontakSection">
+                    <h3 class="section-title">Program Kerja</h3>
+                    <img src="{{ asset('katen/images/wave.svg') }}" class="wave" alt="wave" />
+                </div>
+
+                <div class="padding-30 rounded bordered">
+                    <div class="row gy-5">
+                        <div class="col-sm-6">
+                            <h5>Bidang Kesekretariatan :</h5>
+                            1. Pendataan semua Diaspora yang tersebar diseluruh dunia<br>
+                            2. Melengkapi semua kebutuhan kesekretaritan<br>
+                            3. Membangun Website dan aplikasi<br>
+                            4. Membuka kantor cabang baru disemua kota yang dipandang perlu<br>
+                            5. Memperkuat jejaring dengan semua komunitas warga Wonosobo yang
+                            tersebar diseluruh dunia<br>
+                            6. Pendataan potensi kolaborasi dan jejaring untuk membantu Program
+                            Pemkab Wonosobo dan Warga Wonosobo
+                        </div>
+                        <div class="col-sm-6">
+                            <h5>Bidang Sosial :</h5>
+                            1. Menyelenggarakan Pelatihan Life Skill ,dan peningkatan kapasitas warga
+                            masyarakat di Kabupaten Wonosobo<br>
+                            2. pelatihan-pelatihan keterampilan untuk life skill bagi warga kurang mampu, disabilitas
+                            dan kaum marginal<br>
+                            3. Membangun lembaga pendidikan;<br>
+                            4. Melaksanakan pengobatan gratis;<br>
+                            5. Melakukan penelitian dan studi di bidang ilmu pengetahuan
+                        </div>
+                        <div class="col-sm-6">
+                            <h5>Bidang Kesehatan :</h5>
+                            1. Membantu mengatasi masalah stunting<br>
+                            2. Edukasi Hidup Sehat<br>
+                            3. Membangun layanan kesehatan<br>
+                            4. Membantu penguatan PIK Remaja, Posyandu, Desa Siaga dan sejenisnya<br>
+                            5. Membantu edukasi pendidikan pra nikah<br>
+                            6. Memberikan edukasi makanan sehat
+                        </div>
+                        <div class="col-sm-6">
+                            <h5>Bidang Ekonomi :</h5>
+                            1. Membangun usaha ekonomi dengan memanfaatkan potensi lokal<br>
+                            2. Mematangkan konsep Blue Ekonomi<br>
+                            3. Penyediaan saprodi tepat guna dan murah untuk pertanian<br>
+                            4. Membuka peluang pasar produk local Wonosobo dengan jejaring diaspora
+                            diseluruh dunia<br>
+                            5. Menguatkan jejaring persatuan antar diaspora diberbagai wilayah
+                        </div>
+                        <div class="col-sm-6">
+                            <h5>Bidang Kemanusiaan :</h5>
+                            1. Memberikan bantuan kepada korban bencana alam;<br>
+                            2. Memberikan bantuan kepada kaum marginal di Kabupaten Wonosobo;<br>
+                            3. Mendirikan rumah shelter ;<br>
+                            4. Memberikan bantuan , ide, gagasan dan pendanaan untuk mengatasi
+                            masalah stunting, kesehatan, pendidikan , sanitasi, air bersih dan program
+                            lain yang menjadi prioritas kabupaten Wonosobo<br>
+                            5. Memberikan advokasi dan bantuan hukum bagi diaspora yang bersinggungan
+                            dengan masalah hukum;<br>
+                            6. Membantu diaspora yang terkena masalah di tempat kerja dan perantauan<br>
+                            7. Membantu Kabupaten Wonosobo dalam mengatasi masalah kemiskinan
+                            Ektreme
+                        </div>
+                        <div class="col-sm-6">
+                            <h5>Bidang Lingkungan Hidup :</h5>
+                            1. Melestarikan lingkungan hidup.<br>
+                            2. Kerjasama membangun bank sampah<br>
+                            3. Melakukan upaya pemasarakata tanaman organic<br>
+                            4. Pembuatan alat pemusnah sampah<br>
+                            5. Kerjasama memanfaaatkan lahan kritis menjadi produktif<br>
+                            6. Melakukan penelitian, kajian/studi di bidang lingkungan hidup<br>
+                            7. Melakukan upaya pelestarian mata air, penyelamatan sungai, satwa dan
+                            aneka flora asli Wonosobo<br>
+                            8. Melakukan edukasi konservasi lingkungan<br>
+                            9. Melakukan Kerjasama dengan berbagi pihak dalam upaya konservasi
+                            lingkungan
+                        </div>
+                        <div class="col-sm-6">
+                            <h5>Advokasi dan Pemberdayaan :</h5>
+                            1. Membantu memperjuangkan hak dan kepentingan warga diaspora melalui
+                            advokasi kebijakan baik di kota/ negara asal maupun negara tujuan, dengan
+                            bekerja sama dengan organisasi hak asasi manusia, kelompok advokasi, atau
+                            pihak berwenang terkait.<br>
+                            2. Menyelenggarakan program pemberdayaan yang mencakup pelatihan
+                            kepemimpinan, pembangunan kapasitas, dan pemahaman hak asasi manusia
+                            bagi perantau.<br>
+                            3. Menggalang dukungan dan dana untuk memberikan bantuan keuangan atau
+                            beasiswa kepada perantau yang membutuhkan, terutama dalam situasi darurat
+                            atau krisis.
+
+                        </div>
+                        <div class="col-sm-6">
+                            <h5>Penghargaan dan Prestasi :</h5>
+                            1. Mengadakan penghargaan tahunan untuk mengakui kontribusi dan prestasi
+                            Diaspora yang luar biasa dalam berbagai bidang, seperti bisnis, akademik,
+                            sosial, seni budaya dan kontribusi untuk Kabupaten Wonosobo.<br>
+                            2. Menyelenggarakan program beasiswa atau hibah untuk mendukung
+                            pendidikan atau proyek inovatif yang dilakukan oleh perantau.<br>
+                            3. Mengadakan acara atau festival budaya untuk mempromosikan dan
+                            mempertahankan identitas budaya para diaspora Wonosobo<br>
+                            4. Memberikan panggung penghormatan bagi diaspora bintang Lima yang punya
+                            andil terbaik dalam kolaborasi dan membantu Warga Wonosobo
+                        </div>
+
+                        <div class="col-sm-6">
+                            <h5>Bidang Kehumasan</h5>
+                            1. Membuat pusat informasi online yang menyediakan berbagai sumber daya
+                            penting untuk perantau, seperti panduan kebijakan imigrasi, informasi
+                            kesehatan, saran finansial, dan lainnya.<br>
+                            2. Menyelenggarakan sesi konsultasi online dengan ahli di berbagai bidang,
+                            seperti hukum, keuangan, dan kesehatan, untuk memberikan bantuan dan
+                            saran kepada perantau.<br>
+                            3. Mengadakan pertemuan reguler atau forum diskusi online untuk memfasilitasi
+                            pertukaran pengalaman dan pengetahuan antara perantau<br>
+                            4. Mendirikan komunitas online yang memungkinkan para perantau saling
+                            terhubung dan berbagi informasi serta peluang kolaborasi.<br>
+                            5. Mengadakan acara jaringan secara rutin, baik online maupun offline, untuk
+                            memfasilitasi pertemuan antara perantau dengan pelaku bisnis, tokoh
+                            masyarakat, atau pemangku kepentingan lainnya di kota/ negara asal.<br>
+                            6. Membangun kerjasama dengan lembaga atau organisasi lokal di kota
+                            /negara asal yang mendukung pengembangan perantau, seperti kamar
+                            dagang, lembaga pemerintah, atau perguruan tinggi.
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        
         <section class="main-content">
             <div class="container-xl">
                 <div class="section-header" id="kontakSection">

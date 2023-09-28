@@ -141,7 +141,7 @@
                                 <a class="nav-link" href="#visimisiSection">Visi Misi</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="category.html">Program</a>
+                                <a class="nav-link" href="#programSection">Program Kerja</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#kontakSection">Kontak</a>

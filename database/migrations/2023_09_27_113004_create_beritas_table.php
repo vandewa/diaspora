@@ -15,7 +15,6 @@ return new class extends Migration {
             $table->string('judul')->nullable();
             $table->string('slug')->nullable();
             $table->text('isi_berita')->nullable();
-            $table->integer('views')->nullable();
             $table->integer('created_by')->nullable();
             $table->timestamps();
         });
