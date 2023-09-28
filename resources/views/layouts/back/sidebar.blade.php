@@ -11,8 +11,7 @@
           <!-- Sidebar user panel (optional) -->
           <div class="pb-3 mt-3 mb-3 user-panel d-flex">
               <div class="image">
-                  <img src="{{ asset('AdminLTE/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2"
-                      alt="User Image">
+                  <img src="{{ asset('soul.png') }}" class="img-circle elevation-2" alt="User Image">
               </div>
               <div class="info">
                   <a href="#" class="d-block">{{ auth()->user()->name ?? '-' }}</a>
@@ -37,7 +36,7 @@
                   <li class="nav-item">
                       <a href="{{ route('berita.index') }}"
                           class="nav-link {{ Request::segment(1) == 'berita' ? 'active' : '' }}">
-                          <i class="nav-icon fas fa-newspaper"></i>
+                          <i class="nav-icon far fa-newspaper"></i>
                           <p>
                               Berita
                           </p>
@@ -46,7 +45,7 @@
                   <li class="nav-item">
                       <a href="{{ route('visimisi') }}"
                           class="nav-link {{ Request::segment(1) == 'visi-misi' ? 'active' : '' }}">
-                          <i class="nav-icon fas fa-newspaper"></i>
+                          <i class="nav-icon fas fa-people-carry"></i>
                           <p>
                               Visi & Misi
                           </p>
@@ -55,7 +54,7 @@
                   <li class="nav-item">
                       <a href="{{ route('pendiri.index') }}"
                           class="nav-link {{ Request::segment(1) == 'pendiri' ? 'active' : '' }}">
-                          <i class="nav-icon fas fa-newspaper"></i>
+                          <i class="nav-icon fas fa-user-tie"></i>
                           <p>
                               Pendiri
                           </p>
@@ -73,7 +72,7 @@
                   <li class="nav-item">
                       <a href="{{ route('kontak') }}"
                           class="nav-link {{ Request::segment(1) == 'kontak' ? 'active' : '' }}">
-                          <i class="nav-icon fas fa-phone"></i>
+                          <i class="nav-icon fas fa-phone-square"></i>
                           <p>
                               Kontak
                           </p>

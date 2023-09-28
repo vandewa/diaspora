@@ -23,6 +23,51 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    <style>
+        * {
+            margin: 0px;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        div.wrapper {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 100%;
+            height: 100%;
+            min-width: 80px;
+            min-height: 80px;
+            /* background-color: #37c97b; */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        div.rect {
+            position: absolute;
+            width: 70px;
+            height: 70px;
+            border: 2px solid white;
+            border-radius: 5px;
+            transform: rotate(calc(var(--i) * 105deg)) scale(0);
+            animation: scale 1s ease-in-out calc(var(--i) * 0.5s) infinite alternate;
+            box-shadow: 1px 1px 10px rgba(1, 9, 8, 0.479);
+        }
+
+        @keyframes scale {
+            from {
+                transform: scale(0) rotate(calc(var(--i) * 35deg));
+            }
+
+            to {
+                transform: scale(1) rotate(calc(var(--i) * 35deg));
+                ;
+            }
+        }
+    </style>
     @vite([])
 
 </head>
@@ -31,32 +76,15 @@
 
     <!-- preloader -->
     <div id="preloader">
-        <div class="book">
-            <div class="inner">
-                <div class="left"></div>
-                <div class="middle"></div>
-                <div class="right"></div>
-            </div>
-            <ul>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-            </ul>
+        <div class="wrapper">
+            <div style='--i : 1; background-color : tomato' class="rect"></div>
+            <div style='--i : 2; background-color : #5037c9' class="rect"></div>
+            <div style='--i : 3; background-color : #1ae2ac' class="rect"></div>
+            <div style='--i : 4; background-color : #e29f1a' class="rect"></div>
+            <div style='--i : 5; background-color : #e21ab9' class="rect"></div>
+            <div style='--i : 6; background-color : #c395bf' class="rect"></div>
+            <div style='--i : 7; background-color : #4032bb' class="rect"></div>
+            <div style='--i : 8; background-color : #0fe0b7' class="rect"></div>
         </div>
     </div>
 

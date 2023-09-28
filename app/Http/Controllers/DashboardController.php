@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
@@ -11,7 +12,12 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        return view('dashboard');
+        $total_berita = DB::table('beritas')->count();
+        $total_pembaca = DB::table('views')->count();
+        $total_pengunjung = DB::table('visitors')->count();
+        $pengunjung_hari_ini = DB::table('visitors')->whereDate('created_at', '=', date('Y-m-d'))->count();
+
+        return view('dashboard', compact('total_berita', 'total_pembaca', 'total_pengunjung', 'pengunjung_hari_ini'));
     }
 
     public function gantiPassword(Request $request)

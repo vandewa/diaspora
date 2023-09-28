@@ -44,4 +44,5 @@
             });
         });
     </script>
+    {!! JsValidator::formRequest('App\Http\Requests\BeritaStoreValidation') !!}
 @endpush
