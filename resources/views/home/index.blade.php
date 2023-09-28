@@ -348,9 +348,9 @@
 
 
         <!-- section main content -->
-        <section class="main-content" id="programSection">
+        <section class="main-content">
             <div class="container-xl">
-                <div class="section-header" id="kontakSection">
+                <div class="section-header" id="programSection">
                     <h3 class="section-title">Program Kerja</h3>
                     <img src="{{ asset('katen/images/wave.svg') }}" class="wave" alt="wave" />
                 </div>
@@ -476,7 +476,7 @@
 
             </div>
         </section>
-        
+
         <section class="main-content">
             <div class="container-xl">
                 <div class="section-header" id="kontakSection">
