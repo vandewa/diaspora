@@ -106,7 +106,7 @@
                     <div class="collapse navbar-collapse">
                         <!-- menus -->
                         <ul class="navbar-nav mr-auto">
-                            <li class="nav-item @if (Request::segment(1) == 'news') active @endif">
+                            <li class="nav-item">
                                 <a class="nav-link" href="{{ route('index') }}">Beranda</a>
                             </li>
                             <li class="nav-item">

@@ -96,7 +96,7 @@ class PendiriController extends Controller
                 date('Ymdhis') . '.' . $request->file('path_foto')->extension()
             );
         } else {
-            $lokasi = Pendiri::where('id', $id)->first()->logo;
+            $lokasi = Pendiri::where('id', $id)->first()->path_foto;
         }
 
         Pendiri::find($id)->update([
