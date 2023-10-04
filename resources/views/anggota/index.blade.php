@@ -6,13 +6,6 @@
         <section class="content">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-md-12 mt-3">
-                        <div class="d-flex justify-content-end">
-                            <a href="{{ route('berita.create') }}" type="button" class="btn btn-md btn-primary"> <i
-                                    class="nav-icon fas fa-plus-square mr-3"></i>Add Data</a>
-                        </div>
-                    </div>
-
                     <div class="col-md-12">
                         <!-- Content area -->
                         <div class="card mt-3">
@@ -22,9 +15,9 @@
                                     <thead>
                                         <tr>
                                             <th>No</th>
-                                            <th>Judul</th>
-                                            <th>Publish</th>
-                                            <th>Tanggal</th>
+                                            <th>Nama</th>
+                                            <th>Asal</th>
+                                            <th>Domisili</th>
                                             <th>Aksi</th>
                                             <th style="display: none"></th>
                                         </tr>
@@ -62,23 +55,25 @@
                     className: "text-left"
                 },
                 {
-                    data: 'judul',
-                    name: 'judul',
-                    orderable: false,
-                    searchable: false,
+                    data: 'nama',
+                    name: 'nama',
+                    orderable: true,
+                    searchable: true,
                     className: "text-left"
                 },
                 {
-                    data: 'tombol',
-                    name: 'tombol',
-                    orderable: false,
-                    searchable: false
+                    data: 'asal_desa',
+                    name: 'asal_desa',
+                    orderable: true,
+                    searchable: true
                 },
                 {
-                    data: 'tanggal',
-                    orderable: false,
-                    searchable: false,
+                    data: 'domisili',
+                    name: 'domisili',
+                    orderable: true,
+                    searchable: true
                 },
+
                 {
                     data: 'action',
                     name: 'action',
@@ -98,7 +93,7 @@
         });
 
         function publish(submenu) {
-            var url = "{{ url('sendCheckboxkegiatan') }}";
+            var url = "{{ url('sendCheckbox') }}";
             $.ajax({
                 url: url,
                 method: 'POST',

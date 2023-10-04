@@ -19,7 +19,7 @@ class UserSeeder extends Seeder
             [
                 'id' => '1',
                 'name' => 'Admin',
-                'email' => 'admin@app.com',
+                'email' => 'diasporawonosobo@gmail.com',
                 'password' => bcrypt('password'),
             ],
         ];

@@ -34,6 +34,15 @@
                       </a>
                   </li>
                   <li class="nav-item">
+                      <a href="{{ route('anggota.index') }}"
+                          class="nav-link {{ Request::segment(1) == 'anggota' ? 'active' : '' }}">
+                          <i class="nav-icon fas fa-users"></i>
+                          <p>
+                              Anggota Komunitas
+                          </p>
+                      </a>
+                  </li>
+                  <li class="nav-item">
                       <a href="{{ route('berita.index') }}"
                           class="nav-link {{ Request::segment(1) == 'berita' ? 'active' : '' }}">
                           <i class="nav-icon far fa-newspaper"></i>
@@ -43,11 +52,11 @@
                       </a>
                   </li>
                   <li class="nav-item">
-                      <a href="{{ route('visimisi') }}"
-                          class="nav-link {{ Request::segment(1) == 'visi-misi' ? 'active' : '' }}">
-                          <i class="nav-icon fas fa-people-carry"></i>
+                      <a href="{{ route('kegiatan.index') }}"
+                          class="nav-link {{ Request::segment(1) == 'kegiatan' ? 'active' : '' }}">
+                          <i class="nav-icon fas fa-book-open"></i>
                           <p>
-                              Visi & Misi
+                              Kegiatan
                           </p>
                       </a>
                   </li>
@@ -56,27 +65,60 @@
                           class="nav-link {{ Request::segment(1) == 'pendiri' ? 'active' : '' }}">
                           <i class="nav-icon fas fa-user-tie"></i>
                           <p>
-                              Pendiri
+                              Pengurus
                           </p>
                       </a>
                   </li>
                   <li class="nav-item">
-                      <a href="{{ route('sosmed') }}"
-                          class="nav-link {{ Request::segment(1) == 'sosial-media' ? 'active' : '' }}">
-                          <i class="nav-icon fas fa-hashtag"></i>
+                      <a href="{{ route('partner.index') }}"
+                          class="nav-link {{ Request::segment(1) == 'partner' ? 'active' : '' }}">
+                          <i class="nav-icon fas fa-user-friends"></i>
                           <p>
-                              Sosial Media
+                              Partner
                           </p>
                       </a>
                   </li>
-                  <li class="nav-item">
-                      <a href="{{ route('kontak') }}"
-                          class="nav-link {{ Request::segment(1) == 'kontak' ? 'active' : '' }}">
-                          <i class="nav-icon fas fa-phone-square"></i>
+                  <li
+                      class="nav-item 
+                  {{ Request::segment(1) == 'visi-misi' ? ' menu-open' : '' }}
+                  {{ Request::segment(1) == 'sosial-media' ? ' menu-open' : '' }}
+                  {{ Request::segment(1) == 'kontak' ? ' menu-open' : '' }}
+                  ">
+                      <a href="#"
+                          class="nav-link
+                      {{ Request::segment(1) == 'visi-misi' ? ' active' : '' }}
+                  {{ Request::segment(1) == 'sosial-media' ? ' active' : '' }}
+                  {{ Request::segment(1) == 'kontak' ? ' active' : '' }}
+                      ">
+                          <i class="nav-icon fas fa-info-circle"></i>
                           <p>
-                              Kontak
+                              Informasi Umum
+                              <i class="right fas fa-angle-left"></i>
                           </p>
                       </a>
+                      <ul class="nav nav-treeview">
+                          <li class="nav-item">
+                              <a href="{{ route('visimisi') }}"
+                                  class="nav-link {{ Request::segment(1) == 'visi-misi' ? 'active' : '' }}">
+                                  <i class="far fa-circle nav-icon ml-3"></i>
+                                  <p>Visi & Misi</p>
+                              </a>
+                          </li>
+                          <li class="nav-item">
+                              <a href="{{ route('sosmed') }}"
+                                  class="nav-link {{ Request::segment(1) == 'sosial-media' ? 'active' : '' }}">
+                                  <i class="far fa-circle nav-icon ml-3"></i>
+                                  <p>Sosial Media</p>
+                              </a>
+                          </li>
+                          <li class="nav-item">
+                              <a href="{{ route('kontak') }}"
+                                  class="nav-link {{ Request::segment(1) == 'kontak' ? 'active' : '' }}">
+                                  <i class="far fa-circle nav-icon ml-3"></i>
+                                  <p>Kontak</p>
+                              </a>
+                          </li>
+                      </ul>
                   </li>
                   <li class="nav-item mt-3">
                       <a href="{{ route('password') }}"

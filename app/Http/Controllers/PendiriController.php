@@ -23,8 +23,8 @@ class PendiriController extends Controller
                 ->addColumn('action', function ($data) {
                     return
                         '<div class="list-icons">
-                        <a href="' . route('pendiri.edit', $data->id) . '" class="btn btn-outline-primary rounded-round"><i class="icon-key mr-2"></i>Edit</a>
-                        <a href="' . route('pendiri.destroy', $data->id) . '" class="btn btn-outline-danger rounded-round delete-data-table"><i class="icon-trash mr-2"></i>Hapus</a>
+                        <a href="' . route('pendiri.edit', $data->id) . '" class="btn btn-outline-primary rounded-round"><i class="far fa-plus-square mr-2"></i>Edit</a>
+                        <a href="' . route('pendiri.destroy', $data->id) . '" class="btn btn-outline-danger rounded-round delete-data-table"><i class="fas fa-trash mr-2"></i>Hapus</a>
                     </div>';
                 })
                 ->addColumn('image', function ($data) {
@@ -60,6 +60,7 @@ class PendiriController extends Controller
         Pendiri::create([
             'nama' => $request->nama,
             'jabatan' => $request->jabatan,
+            'tentang' => $request->tentang,
             'path_foto' => $lokasi
         ]);
 
@@ -101,6 +102,7 @@ class PendiriController extends Controller
         Pendiri::find($id)->update([
             'nama' => $request->nama,
             'jabatan' => $request->jabatan,
+            'tentang' => $request->tentang,
             'path_foto' => $lokasi,
         ]);
 

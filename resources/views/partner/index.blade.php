@@ -1,6 +1,14 @@
 @extends('layouts/app')
 
 @section('content')
+    @if (session('status'))
+        <div class="alert bg-success text-white alert-styled-left alert-dismissible mt-1">
+            <button type="button" class="close" data-dismiss="alert"><span>&times;</span></button>
+            {{ session('status') }}
+        </div>
+    @endif
+
+    <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <!-- /.content-header -->
         <section class="content">
@@ -8,7 +16,7 @@
                 <div class="row">
                     <div class="col-md-12 mt-3">
                         <div class="d-flex justify-content-end">
-                            <a href="{{ route('berita.create') }}" type="button" class="btn btn-md btn-primary"> <i
+                            <a href="{{ route('partner.create') }}" type="button" class="btn btn-md btn-primary"> <i
                                     class="nav-icon fas fa-plus-square mr-3"></i>Add Data</a>
                         </div>
                     </div>
@@ -22,11 +30,10 @@
                                     <thead>
                                         <tr>
                                             <th>No</th>
-                                            <th>Judul</th>
-                                            <th>Publish</th>
-                                            <th>Tanggal</th>
+                                            <th>Nama</th>
+                                            <th>Link</th>
+                                            <th>Logo</th>
                                             <th>Aksi</th>
-                                            <th style="display: none"></th>
                                         </tr>
                                     </thead>
                                 </table>
@@ -40,19 +47,11 @@
 
 @push('js')
     <script type="text/javascript">
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
         var table = $('#devan').DataTable({
             processing: true,
             serverSide: true,
             dom: 'lrt',
             // responsive: true,
-            "order": [
-                [5, "desc"]
-            ],
             ajax: window.location.href,
             columns: [{
                     data: 'DT_RowIndex',
@@ -62,22 +61,25 @@
                     className: "text-left"
                 },
                 {
-                    data: 'judul',
-                    name: 'judul',
+                    data: 'nama',
+                    name: 'nama',
                     orderable: false,
                     searchable: false,
                     className: "text-left"
                 },
                 {
-                    data: 'tombol',
-                    name: 'tombol',
-                    orderable: false,
-                    searchable: false
-                },
-                {
-                    data: 'tanggal',
+                    data: 'url',
+                    name: 'url',
                     orderable: false,
                     searchable: false,
+                    className: "text-left"
+                },
+                {
+                    data: 'image',
+                    name: 'image',
+                    orderable: false,
+                    searchable: false,
+                    className: "text-left"
                 },
                 {
                     data: 'action',
@@ -86,41 +88,7 @@
                     searchable: false,
                     className: "text-center"
                 },
-                {
-                    data: 'created_at',
-                    name: 'created_at',
-                    orderable: false,
-                    searchable: false,
-                    className: "text-left",
-                    visible: false
-                },
             ]
         });
-
-        function publish(submenu) {
-            var url = "{{ url('sendCheckboxkegiatan') }}";
-            $.ajax({
-                url: url,
-                method: 'POST',
-                data: {
-                    id: submenu
-                },
-                success: function(response) {
-                    if (response.success) {
-                        Swal.fire(
-                            'Good job!',
-                            'Status is changed',
-                            'success'
-                        )
-                        location.reload();
-                    } else {
-
-                    }
-                },
-                error: function(error) {
-                    alert("Error")
-                }
-            });
-        };
     </script>
 @endpush

@@ -3,15 +3,15 @@
 namespace App\Http\Controllers;
 
 use Carbon\Carbon;
-use App\Models\Berita;
+use App\Models\Kegiatan;
 use Illuminate\Http\Request;
-use Yajra\DataTables\Facades\DataTables;
-use \Cviebrock\EloquentSluggable\Services\SlugService;
 use App\Models\File as Files;
-use Illuminate\Support\Facades\File;
+use Yajra\DataTables\Facades\DataTables;
+use App\Http\Requests\StoreVideoValidation;
+use Cviebrock\EloquentSluggable\Services\SlugService;
 
 
-class BeritaController extends Controller
+class KegiatanController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,15 +20,15 @@ class BeritaController extends Controller
     {
         if ($request->ajax()) {
 
-            $data = Berita::select('*');
+            $data = Kegiatan::select('*');
 
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function ($data) {
                     return
                         '<div class="list-icons">
-                        <a href="' . route('berita.edit', $data->id) . '" class="btn btn-outline-primary rounded-round"><i class="far fa-plus-square mr-2"></i>Edit</a>
-                        <a href="' . route('berita.destroy', $data->id) . '" class="btn btn-outline-danger rounded-round delete-data-table"><i class="fas fa-trash mr-2"></i>Hapus</a>
+                        <a href="' . route('kegiatan.edit', $data->id) . '" class="btn btn-outline-primary rounded-round"><i class="far fa-plus-square mr-2"></i>Edit</a>
+                        <a href="' . route('kegiatan.destroy', $data->id) . '" class="btn btn-outline-danger rounded-round delete-data-table"><i class="fas fa-trash mr-2"></i>Hapus</a>
                     </div>';
                 })
                 ->addColumn(
@@ -48,7 +48,7 @@ class BeritaController extends Controller
                 ->make(true);
         }
 
-        return view('berita.index');
+        return view('kegiatan.index');
     }
 
     /**
@@ -56,40 +56,38 @@ class BeritaController extends Controller
      */
     public function create()
     {
-        return view('berita.create');
+        return view('kegiatan.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreVideoValidation $request)
     {
-        $berita = Berita::create([
+        // return $request->all();
+        $kegiatan = Kegiatan::create([
             'judul' => $request->judul,
             'slug' => $request->slug,
             'isi_berita' => $request->isi_berita,
             'created_by' => auth()->user()->id,
         ]);
 
-        foreach ($request->document as $file) {
-            $path = storage_path('app/public/' . Carbon::now()->isoFormat('Y') . '/' . Carbon::now()->isoFormat('MMMM') . '/');
+        if ($request->file('video')) {
+            $lokasi = $request->file('video')->storeAs(
+                'public/kegiatan/',
+                date('Ymdhis') . '.' . $request->file('video')->extension()
+            );
 
-            if (!file_exists($path)) {
-                mkdir($path, 0777, true);
-            }
+            $nama = date('Ymdhis') . '.' . $request->file('video')->extension();
 
-            $from = storage_path('tmp/uploads/' . $file);
-            $to = $path . $file;
-            File::move($from, $to);
             Files::create([
-                'berita_id' => $berita->id,
-                'nama_file' => $file,
-                'path' => 'public/' . Carbon::now()->isoFormat('Y') . '/' . Carbon::now()->isoFormat('MMMM') . '/' . $file
+                'kegiatan_id' => $kegiatan->id,
+                'nama_file' => $nama,
+                'path' => $lokasi
             ]);
         }
 
-        return redirect()->route('berita.index')->with('store', 'oke');
-
+        return redirect()->route('kegiatan.index')->with('store', 'ok');
     }
 
     /**
@@ -105,9 +103,7 @@ class BeritaController extends Controller
      */
     public function edit(string $id)
     {
-        $data = Berita::find($id);
-
-        return view('berita.edit', compact('data'));
+        //
     }
 
     /**
@@ -115,27 +111,7 @@ class BeritaController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        Berita::find($id)->update([
-            'judul' => $request->judul,
-            'slug' => $request->slug,
-            'isi_berita' => $request->isi_berita,
-        ]);
-
-        if ($request->document) {
-            foreach ($request->document as $file) {
-                $path = storage_path('app/public/' . Carbon::now()->isoFormat('Y') . '/' . Carbon::now()->isoFormat('MMMM') . '/');
-                $from = storage_path('tmp/uploads/' . $file);
-                $to = $path . $file;
-                File::move($from, $to);
-                Files::create([
-                    'berita_id' => $id,
-                    'nama_file' => $file,
-                    'path' => 'public/' . Carbon::now()->isoFormat('Y') . '/' . Carbon::now()->isoFormat('MMMM') . '/' . $file
-                ]);
-            }
-        }
-
-        return redirect()->route('berita.index')->with('edit', 'oke');
+        //
     }
 
     /**
@@ -143,18 +119,18 @@ class BeritaController extends Controller
      */
     public function destroy(string $id)
     {
-        Berita::destroy($id);
+        Kegiatan::destroy($id);
     }
 
     public function checkSlug(Request $request)
     {
-        $slug = SlugService::createSlug(Berita::class, 'slug', $request->judul);
+        $slug = SlugService::createSlug(Kegiatan::class, 'slug', $request->judul);
         return response()->json(['slug' => $slug]);
     }
 
     public function changeAccess(Request $request)
     {
-        $comp = Berita::where('id', $request->id)->first();
+        $comp = Kegiatan::where('id', $request->id)->first();
         $comp->publish_st = !$comp->publish_st;
         $comp->save();
 

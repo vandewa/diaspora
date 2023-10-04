@@ -22,6 +22,6 @@ class DatabaseSeeder extends Seeder
         $this->call(UserSeeder::class);
         $this->call(InformasiUmumSeeder::class);
         $this->call(PendiriSeeder::class);
-
+        $this->call(RegionSeeder::class);
     }
 }

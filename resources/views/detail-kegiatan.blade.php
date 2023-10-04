@@ -24,24 +24,19 @@
                                 </li>
                             </ul>
                         </div>
-                        <!-- featured image -->
-                        {{-- <div class="featured-image">
-                        <img src="images/posts/featured-lg.jpg" alt="post-title" />
-                    </div> --}}
                         <div class="swiper mySwiper">
                             <div class="swiper-wrapper">
-                                @foreach ($data->foto as $list)
-                                    <div class="swiper-slide">
-                                        <img src="{{ asset($list->preview_image ?? '') }}" alt="image"
-                                            style="height: 100%; border-top-left-radius: 25px; border-top-right-radius: 25px;" />
-                                    </div>
-                                @endforeach
+                                @if ($data->video)
+                                    <video id="portfolio-vid" controls width="1920" height="420">
+                                        <source src="{{ asset('storage/kegiatan/' . $data->video->nama_file) }}"
+                                            type="video/mp4">
+                                    </video>
+                                @endif
                             </div>
                             <div class="swiper-button-next"></div>
                             <div class="swiper-button-prev"></div>
                             <div class="swiper-pagination"></div>
                         </div>
-                        <!-- post content -->
                         <div class="post-content clearfix mt-3">
                             {!! $data->isi_berita !!}
                         </div>

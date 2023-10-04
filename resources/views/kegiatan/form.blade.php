@@ -1,24 +1,24 @@
 <div class="card card-info mt-3">
     <div class="card-header">
-        <h3 class="card-title">Berita</h3>
+        <h3 class="card-title">Kegiatan</h3>
     </div>
     <div class="card-body">
         <div class="form-group">
-            <label>Judul Berita</label>
-            {{ Form::text('judul', null, ['class' => 'form-control ', 'placeholder' => 'Judul berita', 'id' => 'judul']) }}
+            <label>Judul</label>
+            {{ Form::text('judul', null, ['class' => 'form-control ', 'placeholder' => 'Judul kegiatan', 'id' => 'judul']) }}
         </div>
         <div class="form-group">
             <label>Slug</label>
             {{ Form::text('slug', null, ['class' => 'form-control ', 'id' => 'slug', 'readonly' => true]) }}
         </div>
         <div class="form-group">
-            <label for="">Foto <small class="text-danger">(*max 2MB)</small></label>
-            <div class="dropzone" id="my-dropzone">
-            </div>
+            <label>Isi Kegiatan</label>
+            {{ Form::textarea('isi_berita', null, ['id' => 'summernote']) }}
         </div>
         <div class="form-group">
-            <label>isi Berita</label>
-            {{ Form::textarea('isi_berita', null, ['id' => 'summernote']) }}
+            <label>Video <small class="text-danger">(*maksimal 10MB)</small></label>
+            {{-- {{ Form::file('video', null, ['class' => 'form-control ', 'accept' => 'video/mp4,video/x-m4v,video/*']) }} --}}
+            <input type="file" class="form-control" name="video" accept="video/mp4,video/x-m4v,video/*">
         </div>
     </div class="form-group">
     <div class="card-footer">
@@ -44,5 +44,5 @@
             });
         });
     </script>
-    {!! JsValidator::formRequest('App\Http\Requests\BeritaStoreValidation') !!}
+    {!! JsValidator::formRequest('App\Http\Requests\StoreVideoValidation') !!}
 @endpush

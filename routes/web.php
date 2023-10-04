@@ -1,11 +1,14 @@
 <?php
 
+use App\Http\Controllers\AnggotaController;
 use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InformasiUmumController;
+use App\Http\Controllers\KegiatanController;
+use App\Http\Controllers\PartnersController;
 use App\Http\Controllers\PendiriController;
 use Illuminate\Support\Facades\File;
 
@@ -23,6 +26,12 @@ use Illuminate\Support\Facades\File;
 
 Route::get('/', [HomeController::class, 'index'])->name('index');
 Route::get('/news/{id}', [HomeController::class, 'berita'])->name('detail.berita');
+Route::get('/proposal/{id}', [HomeController::class, 'kegiatan'])->name('detail.kegiatan');
+Route::get('/news-list', [HomeController::class, 'listNews'])->name('news.list');
+Route::get('/list-kegiatan', [HomeController::class, 'listKegiatan'])->name('kegiatannya.list');
+Route::get('/tentang-pengurus/{id}', [HomeController::class, 'pengurus'])->name('detail.pengurus');
+Route::get('anggota-komunitas', [HomeController::class, 'anggota'])->name('anggota');
+Route::post('anggota-komunitas', [HomeController::class, 'storeAnggota'])->name('anggota.post');
 
 //dokumentasi template
 Route::get('docs', function () {
@@ -46,8 +55,12 @@ Route::middleware([
     Route::post('/ganti-password', [DashboardController::class, 'gantiPassword'])->name('ganti.password');
     Route::resource('pendiri', PendiriController::class);
     Route::post('sendCheckbox', [BeritaController::class, 'changeAccess']);
+    Route::post('sendCheckboxkegiatan', [KegiatanController::class, 'changeAccess']);
     Route::get('/berita/checkSlug', [BeritaController::class, 'checkSlug']);
+    Route::get('/kegiatan/checkSlug', [KegiatanController::class, 'checkSlug']);
     Route::resource('berita', BeritaController::class);
     Route::resource('file_image', FileController::class);
-
+    Route::resource('anggota', AnggotaController::class);
+    Route::resource('partner', PartnersController::class);
+    Route::resource('kegiatan', KegiatanController::class);
 });

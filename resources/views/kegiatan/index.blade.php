@@ -8,7 +8,7 @@
                 <div class="row">
                     <div class="col-md-12 mt-3">
                         <div class="d-flex justify-content-end">
-                            <a href="{{ route('berita.create') }}" type="button" class="btn btn-md btn-primary"> <i
+                            <a href="{{ route('kegiatan.create') }}" type="button" class="btn btn-md btn-primary"> <i
                                     class="nav-icon fas fa-plus-square mr-3"></i>Add Data</a>
                         </div>
                     </div>
