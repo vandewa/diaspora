@@ -244,7 +244,7 @@
                                 @endforeach
                             </div>
                             <!-- load more button -->
-                            <div class="text-center">
+                            <div class="text-center mt-4">
                                 <a href="{{ route('kegiatannya.list') }}" class="btn btn-simple">Lihat
                                     Selengkapnya</a>
                             </div>
@@ -477,7 +477,7 @@
             <!-- instagram feed -->
             <div class="instagram">
                 <div class="container-xl">
-                    <div class="section-header" id="kontakSection">
+                    <div class="section-header">
                         <h3 class="section-title">Partners</h3>
                         <img src="{{ asset('katen/images/wave.svg') }}" class="wave" alt="wave" />
                     </div>
