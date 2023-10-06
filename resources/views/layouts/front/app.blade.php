@@ -4,10 +4,11 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Diaspora Wonosobo</title>
-    <meta name="description" content="Diaspora Wonosobo">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Yayasan Diaspora Wonosobo">
+    <meta property="og:description" content="Website Resmi Yayasan Diaspora Kabupaten Wonosobo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('favicon_io/favicon.ico') }}">
-
 
     <!-- STYLES -->
     <link rel="stylesheet" href="{{ asset('katen/css/bootstrap.min.css') }}" type="text/css" media="all">

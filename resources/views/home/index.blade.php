@@ -218,11 +218,14 @@
                                                 </span>
                                                 <a href="blog-single.html">
                                                     <div class="inner">
-                                                        <video id="portfolio-vid" controls width="300"
-                                                            height="250">
-                                                            <source src="https://www.w3schools.com/tags/mov_bbb.mp4"
-                                                                type="video/mp4">
-                                                        </video>
+                                                        @if ($k->video)
+                                                            <video id="portfolio-vid" controls width="300"
+                                                                height="250">
+                                                                <source
+                                                                    src="{{ asset('storage/kegiatan/' . $k->video->nama_file ?? '') }}"
+                                                                    type="video/mp4">
+                                                            </video>
+                                                        @endif
                                                     </div>
                                                 </a>
                                             </div>
