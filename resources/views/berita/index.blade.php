@@ -98,7 +98,7 @@
         });
 
         function publish(submenu) {
-            var url = "{{ url('sendCheckboxkegiatan') }}";
+            var url = "{{ url('sendCheckbox') }}";
             $.ajax({
                 url: url,
                 method: 'POST',
