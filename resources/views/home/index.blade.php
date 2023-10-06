@@ -488,14 +488,14 @@
                     <div class="instagram-feed d-flex flex-wrap">
                         @foreach ($partner as $p)
                             @if (is_mobile())
-                                <div class="col-sm-6 mb-3">
+                                <div class="col-sm-6 mb-5">
                                     <a href="{{ $p->url }}" target="_blank">
                                         <img src="{{ $p->preview_image }}" class="d-block w-100"
                                             style="max-height: 300px;" />
                                     </a>
                                 </div>
                             @else
-                                <div class="insta-item col-sm-12 col-6 col-md-2 mb-3" style="margin-right:20px;">
+                                <div class="insta-item col-sm-12 col-6 col-md-2 mb-4" style="margin-right:20px;">
                                     <a href="{{ $p->url }}" target="_blank">
                                         <img src="{{ $p->preview_image }}" class="d-block w-100"
                                             style="max-height: 300px;" />
