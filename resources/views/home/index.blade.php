@@ -487,7 +487,7 @@
                     <!-- button -->
                     <div class="instagram-feed d-flex flex-wrap">
                         @foreach ($partner as $p)
-                            <div class="insta-item col-sm-2 col-6 col-md-2 mr-2">
+                            <div class="insta-item col-sm-2 col-6 col-md-2" style="margin-right:20px;">
                                 <a href="{{ $p->url }}" target="_blank">
                                     <img src="{{ $p->preview_image }}" class="d-block w-100"
                                         style="max-height: 300px;" />
