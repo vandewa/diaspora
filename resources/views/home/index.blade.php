@@ -6,10 +6,11 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>Diaspora Wonosobo</title>
-    <meta name="description" content="Diaspora Wonosobo">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Yayasan Diaspora Wonosobo">
+    <meta property="og:description" content="Website Resmi Yayasan Diaspora Kabupaten Wonosobo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('favicon_io/favicon.ico') }}">
-
 
     <!-- STYLES -->
     <link rel="stylesheet" href="{{ asset('katen/css/bootstrap.min.css') }}" type="text/css" media="all">
@@ -17,12 +18,10 @@
     <link rel="stylesheet" href="{{ asset('katen/css/slick.css') }}" type="text/css" media="all">
     <link rel="stylesheet" href="{{ asset('katen/css/simple-line-icons.css') }}" type="text/css" media="all">
     <link rel="stylesheet" href="{{ asset('katen/css/style.css') }}" type="text/css" media="all">
-
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-
     <style>
         * {
             margin: 0px;
@@ -127,9 +126,9 @@
                             <a class="search icon-button" href="{{ url('login') }}">
                                 <i class="icon-user"></i>
                             </a>
-                            {{-- <button class="burger-menu icon-button ms-2 float-end float-md-none">
+                            <button class="burger-menu icon-button ms-2 float-end float-md-none">
                                 <span class="burger-icon"></span>
-                            </button> --}}
+                            </button>
                         </div>
                     </div>
 
@@ -171,8 +170,8 @@
         </header>
 
         <!-- section hero -->
-        <section class="hero data-bg-image d-flex align-items-center" data-bg-image="images/other/hero.jpg"
-            id="berandaSection">
+        <section class="hero data-bg-image d-flex align-items-center"
+            data-bg-image="{{ asset('katen/images/other/hero.jpg') }}" id="berandaSection">
             <div class="container-xl">
                 <!-- call to action -->
                 <div class="text-center cta">
@@ -192,159 +191,163 @@
             </svg>
 
         </section>
+
         <!-- section main content -->
-        <div class="container-xl">
+        <section class="main-content mt-5">
+            <div class="container-xl">
 
-            <div class="row gy-4">
+                <div class="row gy-4">
 
-                <div class="col-lg-8">
-                    <section id="kegiatanSection">
-                        <div id="kegiatanSection">
-                            <div class="section-header">
-                                <h3 class="section-title">Proposal Kegiatan</h3>
-                                <img src="{{ asset('katen/images/wave.svg') }}" class="wave" alt="wave" />
+                    <div class="col-lg-8">
+                        <section id="kegiatanSection">
+                            <div id="kegiatanSection">
+                                <div class="section-header">
+                                    <h3 class="section-title">Proposal Kegiatan</h3>
+                                    <img src="{{ asset('katen/images/wave.svg') }}" class="wave" alt="wave" />
+                                </div>
                             </div>
+
+                            <div class="padding-30 rounded bordered">
+                                <div class="row gy-5">
+
+                                    @foreach ($kegiatan as $k)
+                                        <div class="col-sm-6">
+                                            <!-- post large -->
+                                            <div class="post">
+                                                <div class="thumb rounded">
+                                                    <a class="category-badge position-absolute">New</a>
+                                                    </span>
+                                                    <a href="blog-single.html">
+                                                        <div class="inner">
+                                                            @if ($k->video)
+                                                                <video id="portfolio-vid" controls width="300"
+                                                                    height="250">
+                                                                    <source
+                                                                        src="{{ asset('storage/kegiatan/' . $k->video->nama_file ?? '') }}"
+                                                                        type="video/mp4">
+                                                                </video>
+                                                            @endif
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                                <ul class="meta list-inline mt-4 mb-0">
+                                                    <li class="list-inline-item">
+                                                        <img src="{{ asset('a.png') }}" alt="author"
+                                                            style="height: 20px;"class="mr-3" />
+                                                        {{ $k->dibuat->name ?? '' }}
+                                                    </li>
+                                                    <li class="list-inline-item">
+                                                        {{ \Carbon\Carbon::createFromTimeStamp(strtotime($k->created_at))->isoFormat('D MMMM Y') }}
+                                                    </li>
+                                                </ul>
+                                                <h5 class="post-title mb-3 mt-3"><a
+                                                        href="{{ route('detail.kegiatan', $k->slug) }}">{{ $k->judul }}</a>
+                                                </h5>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
+                                <!-- load more button -->
+                                <div class="text-center mt-4">
+                                    <a href="{{ route('kegiatannya.list') }}" class="btn btn-simple">Lihat
+                                        Selengkapnya</a>
+                                </div>
+
+                            </div>
+                        </section>
+
+
+                        <div id="de"></div>
+                        <div class="section-header mt-5">
+                            <h3 class="section-title">Berita</h3>
+                            <img src="{{ asset('katen/images/wave.svg') }}" class="wave" alt="wave" />
                         </div>
 
-                        <div class="padding-30 rounded bordered">
-                            <div class="row gy-5">
+                        <div class="rounded padding-30 bordered">
 
-                                @foreach ($kegiatan as $k)
-                                    <div class="col-sm-6">
-                                        <!-- post large -->
-                                        <div class="post">
-                                            <div class="thumb rounded">
-                                                <a class="category-badge position-absolute">New</a>
+                            <div class="row" id="pagenya">
+                                @foreach ($berita as $b)
+                                    <div class="col-md-12 col-sm-6">
+                                        <!-- post -->
+                                        <div class="clearfix post post-list">
+                                            <div class="rounded thumb">
+                                                <span class="post-format-sm">
+                                                    <i class="icon-picture"></i>
                                                 </span>
-                                                <a href="blog-single.html">
+                                                <a href="{{ route('detail.berita', $b->slug) }}">
                                                     <div class="inner">
-                                                        @if ($k->video)
-                                                            <video id="portfolio-vid" controls width="300"
-                                                                height="250">
-                                                                <source
-                                                                    src="{{ asset('storage/kegiatan/' . $k->video->nama_file ?? '') }}"
-                                                                    type="video/mp4">
-                                                            </video>
-                                                        @endif
+                                                        <img src="{{ asset($b->sampul->preview_image ?? '') }}"
+                                                            alt="post-title"style="height:100%;width:100%;object-fit:cover" />
                                                     </div>
                                                 </a>
                                             </div>
-                                            <ul class="meta list-inline mt-4 mb-0">
-                                                <li class="list-inline-item">
-                                                    <img src="{{ asset('a.png') }}" alt="author"
-                                                        style="height: 20px;"class="mr-3" />
-                                                    {{ $k->dibuat->name ?? '' }}
-                                                </li>
-                                                <li class="list-inline-item">
-                                                    {{ \Carbon\Carbon::createFromTimeStamp(strtotime($k->created_at))->isoFormat('D MMMM Y') }}
-                                                </li>
-                                            </ul>
-                                            <h5 class="post-title mb-3 mt-3"><a
-                                                    href="{{ route('detail.kegiatan', $k->slug) }}">{{ $k->judul }}</a>
-                                            </h5>
-                                        </div>
-                                    </div>
-                                @endforeach
-                            </div>
-                            <!-- load more button -->
-                            <div class="text-center mt-4">
-                                <a href="{{ route('kegiatannya.list') }}" class="btn btn-simple">Lihat
-                                    Selengkapnya</a>
-                            </div>
+                                            <div class="details">
+                                                <ul class="mb-3 meta list-inline">
+                                                    <li class="list-inline-item">
+                                                        <img src="{{ asset('a.png') }}" alt="author"
+                                                            style="height: 20px;"class="mr-3" />
+                                                        {{ $b->dibuat->name ?? '' }}
+                                                    </li>
+                                                    <li class="list-inline-item">
+                                                        {{ \Carbon\Carbon::createFromTimeStamp(strtotime($b->created_at))->isoFormat('D MMMM Y') }}
+                                                    </li>
+                                                </ul>
+                                                <h5 class="post-title"><a
+                                                        href="{{ route('detail.berita', $b->slug) }}">{{ $b->judul ?? '' }}</a>
+                                                </h5>
+                                                <div class="clearfix post-bottom d-flex align-items-center">
+                                                    <div class="social-share me-auto">
+                                                        <button class="toggle-button icon-share"></button>
+                                                        <ul class="mb-0 icons list-unstyled list-inline">
+                                                            <li class="list-inline-item"><a
+                                                                    href="https://www.facebook.com/sharer/sharer.php?u={{ url('/news/' . $b->slug) }}"
+                                                                    target="_blank"><i
+                                                                        class="fab fa-facebook-f"></i></a>
+                                                            </li>
+                                                            <li class="list-inline-item"><a
+                                                                    href="https://twitter.com/intent/tweet?url={{ url('/news/' . $b->slug) }}"
+                                                                    target="_blank"><i class="fab fa-twitter"></i></a>
+                                                            </li>
 
-                        </div>
-                    </section>
+                                                            <li class="list-inline-item"><a
+                                                                    href="https://api.whatsapp.com/send?text={{ url('/news/' . $b->slug) }}"
+                                                                    target="_blank"><i
+                                                                        class="fab fa-whatsapp"></i></a>
+                                                            </li>
 
-
-                    <div id="de"></div>
-                    <div class="section-header mt-5">
-                        <h3 class="section-title">Berita</h3>
-                        <img src="{{ asset('katen/images/wave.svg') }}" class="wave" alt="wave" />
-                    </div>
-
-                    <div class="rounded padding-30 bordered">
-
-                        <div class="row" id="pagenya">
-                            @foreach ($berita as $b)
-                                <div class="col-md-12 col-sm-6">
-                                    <!-- post -->
-                                    <div class="clearfix post post-list">
-                                        <div class="rounded thumb">
-                                            <span class="post-format-sm">
-                                                <i class="icon-picture"></i>
-                                            </span>
-                                            <a href="{{ route('detail.berita', $b->slug) }}">
-                                                <div class="inner">
-                                                    <img src="{{ asset($b->sampul->preview_image ?? '') }}"
-                                                        alt="post-title"style="height:100%;width:100%;object-fit:cover" />
-                                                </div>
-                                            </a>
-                                        </div>
-                                        <div class="details">
-                                            <ul class="mb-3 meta list-inline">
-                                                <li class="list-inline-item">
-                                                    <img src="{{ asset('a.png') }}" alt="author"
-                                                        style="height: 20px;"class="mr-3" />
-                                                    {{ $b->dibuat->name ?? '' }}
-                                                </li>
-                                                <li class="list-inline-item">
-                                                    {{ \Carbon\Carbon::createFromTimeStamp(strtotime($b->created_at))->isoFormat('D MMMM Y') }}
-                                                </li>
-                                            </ul>
-                                            <h5 class="post-title"><a
-                                                    href="{{ route('detail.berita', $b->slug) }}">{{ $b->judul ?? '' }}</a>
-                                            </h5>
-                                            <div class="clearfix post-bottom d-flex align-items-center">
-                                                <div class="social-share me-auto">
-                                                    <button class="toggle-button icon-share"></button>
-                                                    <ul class="mb-0 icons list-unstyled list-inline">
-                                                        <li class="list-inline-item"><a
-                                                                href="https://www.facebook.com/sharer/sharer.php?u={{ url('/news/' . $b->slug) }}"
-                                                                target="_blank"><i class="fab fa-facebook-f"></i></a>
-                                                        </li>
-                                                        <li class="list-inline-item"><a
-                                                                href="https://twitter.com/intent/tweet?url={{ url('/news/' . $b->slug) }}"
-                                                                target="_blank"><i class="fab fa-twitter"></i></a>
-                                                        </li>
-
-                                                        <li class="list-inline-item"><a
-                                                                href="https://api.whatsapp.com/send?text={{ url('/news/' . $b->slug) }}"
-                                                                target="_blank"><i class="fab fa-whatsapp"></i></a>
-                                                        </li>
-
-                                                    </ul>
-                                                </div>
-                                                <div class="more-button float-end">
-                                                    <a href="{{ route('detail.berita', $b->slug) }}"><span
-                                                            class="icon-options"></span></a>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="more-button float-end">
+                                                        <a href="{{ route('detail.berita', $b->slug) }}"><span
+                                                                class="icon-options"></span></a>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            @endforeach
+                                @endforeach
+
+                            </div>
+                            <!-- load more button -->
+                            <div class="text-center">
+                                <a href="{{ route('news.list') }}" class="btn btn-simple">Lihat Selengkapnya</a>
+                            </div>
+                            {{-- {{ $berita->links('vendor.pagination.simple-default') }} --}}
 
                         </div>
-                        <!-- load more button -->
-                        <div class="text-center">
-                            <a href="{{ route('news.list') }}" class="btn btn-simple">Lihat Selengkapnya</a>
-                        </div>
-                        {{-- {{ $berita->links('vendor.pagination.simple-default') }} --}}
+                    </div>
+                    <div class="col-lg-4">
+
+                        <section id="visimisiSection">
+                            @include('sidebarkanan')
+                        </section>
 
                     </div>
-                </div>
-
-                <div class="col-lg-4">
-
-                    <section id="visimisiSection">
-                        @include('sidebarkanan')
-                    </section>
 
                 </div>
+
             </div>
-
-        </div>
-
+        </section>
 
         <!-- section main content -->
         <section id="programSection" class="mt-5">
@@ -558,12 +561,36 @@
 
             </div>
         </section>
-
         <!-- footer -->
         @include('home.footer')
 
     </div><!-- end site wrapper -->
 
+    <!-- canvas menu -->
+    <div class="canvas-menu d-flex align-items-end flex-column">
+        <!-- close button -->
+        <button type="button" class="btn-close" aria-label="Close"></button>
+
+        <!-- logo -->
+        <div class="logo">
+            <img src="{{ asset('a.png') }}" alt="Katen" style="max-height: 50px;" />
+        </div>
+
+        <!-- menu -->
+        <nav>
+            <ul class="vertical-menu">
+                <li><a href="#berandaSection">Beranda</a>
+                </li>
+                <li><a href="#kegiatanSection">Kegiatan Terkini</a></li>
+                <li><a href="#visimisiSection">Visi Misi</a></li>
+                <li><a href="#programSection">Program Kerja</a></li>
+                <li><a href="#kontakSection">Kontak</a></li>
+                <li><a href="#partnerSection"">Partners</a></li>
+                <li><a href="{{ route('anggota') }}">Anggota
+                        Komunitas Diaspora</a></li>
+            </ul>
+        </nav>
+    </div>
 
     <!-- JAVA SCRIPTS -->
     <script src="{{ asset('katen/js/jquery.min.js') }}"></script>
