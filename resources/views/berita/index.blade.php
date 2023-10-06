@@ -18,18 +18,20 @@
                         <div class="card mt-3">
                             <!-- /.card-header -->
                             <div class="card-body">
-                                <table id="devan" class="table table-bordered table-hover">
-                                    <thead>
-                                        <tr>
-                                            <th>No</th>
-                                            <th>Judul</th>
-                                            <th>Publish</th>
-                                            <th>Tanggal</th>
-                                            <th>Aksi</th>
-                                            <th style="display: none"></th>
-                                        </tr>
-                                    </thead>
-                                </table>
+                                <div class="table-responsive">
+                                    <table id="devan" class="table table-bordered table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>No</th>
+                                                <th>Judul</th>
+                                                <th>Publish</th>
+                                                <th>Tanggal</th>
+                                                <th>Aksi</th>
+                                                <th style="display: none"></th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
