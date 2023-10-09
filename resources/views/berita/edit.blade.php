@@ -19,6 +19,16 @@
 @endsection
 
 @push('js')
+    <script>
+        const judul_posting = document.querySelector('#judul');
+        const slug = document.querySelector('#slug');
+
+        judul.addEventListener('change', function() {
+            fetch('/berita/checkSlug?judul=' + judul.value)
+                .then(response => response.json())
+                .then(data => slug.value = data.slug);
+        });
+    </script>
     <script type="text/javascript">
         var uploadedDocumentMap = {};
         let token = $("meta[name='csrf-token']").attr("content");
