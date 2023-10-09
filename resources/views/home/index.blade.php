@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="{{ asset('katen/css/slick.css') }}" type="text/css" media="all">
     <link rel="stylesheet" href="{{ asset('katen/css/simple-line-icons.css') }}" type="text/css" media="all">
     <link rel="stylesheet" href="{{ asset('katen/css/style.css') }}" type="text/css" media="all">
+
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -65,6 +66,11 @@
                 transform: scale(1) rotate(calc(var(--i) * 35deg));
                 ;
             }
+        }
+
+        iframe {
+            width: 100%;
+            aspect-ratio: 16 / 9;
         }
     </style>
     @vite([])
@@ -211,25 +217,9 @@
                                 <div class="row gy-5">
 
                                     @foreach ($kegiatan as $k)
-                                        <div class="col-sm-6">
+                                        <div class="col-sm-12">
                                             <!-- post large -->
                                             <div class="post">
-                                                <div class="thumb rounded">
-                                                    <a class="category-badge position-absolute">New</a>
-                                                    </span>
-                                                    <a href="blog-single.html">
-                                                        <div class="inner">
-                                                            @if ($k->video)
-                                                                <video id="portfolio-vid" controls width="300"
-                                                                    height="250">
-                                                                    <source
-                                                                        src="{{ asset('storage/kegiatan/' . $k->video->nama_file ?? '') }}"
-                                                                        type="video/mp4">
-                                                                </video>
-                                                            @endif
-                                                        </div>
-                                                    </a>
-                                                </div>
                                                 <ul class="meta list-inline mt-4 mb-0">
                                                     <li class="list-inline-item">
                                                         <img src="{{ asset('a.png') }}" alt="author"
@@ -243,6 +233,14 @@
                                                 <h5 class="post-title mb-3 mt-3"><a
                                                         href="{{ route('detail.kegiatan', $k->slug) }}">{{ $k->judul }}</a>
                                                 </h5>
+                                                <div class="thumb rounded">
+                                                    <a class="category-badge position-absolute">New</a>
+                                                    </span>
+                                                    {{-- <a href="blog-single.html"> --}}
+                                                    {!! $k->link_yt !!}
+                                                    {{-- </a> --}}
+                                                </div>
+
                                             </div>
                                         </div>
                                     @endforeach
@@ -664,6 +662,60 @@
             this.pause();
         });
     </script> --}}
+    <script>
+        // 2. This code loads the IFrame Player API code asynchronously.
+        var tag = document.createElement('script');
+
+        tag.src = "https://www.youtube.com/iframe_api";
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+        // 3. This function creates an <iframe> (and YouTube player)
+        //    after the API code downloads.
+        var player;
+
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('player', {
+                height: '390',
+                width: '640',
+                videoId: 'M7lc1UVf-VE',
+                playerVars: {
+                    'playsinline': 1
+                },
+                events: {
+                    'onReady': onPlayerReady,
+                    'onStateChange': onPlayerStateChange
+                }
+            });
+        }
+
+        // 4. The API will call this function when the video player is ready.
+        function onPlayerReady(event) {
+            event.target.playVideo();
+        }
+
+        // 5. The API calls this function when the player's state changes.
+        //    The function indicates that when playing a video (state=1),
+        //    the player should play for six seconds and then stop.
+        var done = false;
+
+        function onPlayerStateChange(event) {
+            if (event.data == YT.PlayerState.PLAYING && !done) {
+                setTimeout(stopVideo, 6000);
+                done = true;
+            }
+        }
+
+        function stopVideo() {
+            player.stopVideo();
+        }
+
+        function loadVideoById({
+            'videoId': 'bHQqvYy5KYo',
+            'startSeconds': 5,
+            'endSeconds': 60
+        });
+    </script>
 </body>
 
 </html>

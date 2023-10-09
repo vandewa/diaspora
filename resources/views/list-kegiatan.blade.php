@@ -12,21 +12,9 @@
                         <div class="de"></div>
                         <div class="row" id="pagenya">
                             @foreach ($data as $k)
-                                <div class="col-sm-6">
+                                <div class="col-sm-12">
                                     <!-- post large -->
                                     <div class="post">
-                                        <div class="thumb rounded">
-                                            <a class="category-badge position-absolute">New</a>
-                                            </span>
-                                            <a href="blog-single.html">
-                                                <div class="inner">
-                                                    <video id="portfolio-vid" controls width="300" height="250">
-                                                        <source src="https://www.w3schools.com/tags/mov_bbb.mp4"
-                                                            type="video/mp4">
-                                                    </video>
-                                                </div>
-                                            </a>
-                                        </div>
                                         <ul class="meta list-inline mt-4 mb-0">
                                             <li class="list-inline-item">
                                                 <img src="{{ asset('a.png') }}" alt="author"
@@ -40,6 +28,14 @@
                                         <h5 class="post-title mb-3 mt-3"><a
                                                 href="{{ route('detail.kegiatan', $k->slug) }}">{{ $k->judul }}</a>
                                         </h5>
+                                        <div class="thumb rounded">
+                                            <a class="category-badge position-absolute">New</a>
+                                            </span>
+                                            <div class="inner">
+                                                {!! $k->link_yt !!}
+                                            </div>
+                                        </div>
+
                                     </div>
                                 </div>
                             @endforeach
@@ -63,3 +59,12 @@
         </div>
     </section>
 @endsection
+
+@push('css')
+    <style>
+        iframe {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+        }
+    </style>
+@endpush

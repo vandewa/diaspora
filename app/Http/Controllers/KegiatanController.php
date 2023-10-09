@@ -62,7 +62,7 @@ class KegiatanController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreVideoValidation $request)
+    public function store(Request $request)
     {
         // return $request->all();
         $kegiatan = Kegiatan::create([
@@ -70,22 +70,23 @@ class KegiatanController extends Controller
             'slug' => $request->slug,
             'isi_berita' => $request->isi_berita,
             'created_by' => auth()->user()->id,
+            'link_yt' => $request->link_yt
         ]);
 
-        if ($request->file('video')) {
-            $lokasi = $request->file('video')->storeAs(
-                'public/kegiatan/',
-                date('Ymdhis') . '.' . $request->file('video')->extension()
-            );
+        // if ($request->file('video')) {
+        //     $lokasi = $request->file('video')->storeAs(
+        //         'public/kegiatan/',
+        //         date('Ymdhis') . '.' . $request->file('video')->extension()
+        //     );
 
-            $nama = date('Ymdhis') . '.' . $request->file('video')->extension();
+        //     $nama = date('Ymdhis') . '.' . $request->file('video')->extension();
 
-            Files::create([
-                'kegiatan_id' => $kegiatan->id,
-                'nama_file' => $nama,
-                'path' => $lokasi
-            ]);
-        }
+        //     Files::create([
+        //         'kegiatan_id' => $kegiatan->id,
+        //         'nama_file' => $nama,
+        //         'path' => $lokasi
+        //     ]);
+        // }
 
         return redirect()->route('kegiatan.index')->with('store', 'ok');
     }
@@ -103,7 +104,9 @@ class KegiatanController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $data = Kegiatan::find($id);
+
+        return view('kegiatan.edit', compact('data'));
     }
 
     /**
@@ -111,7 +114,14 @@ class KegiatanController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        Kegiatan::find($id)->update([
+            'judul' => $request->judul,
+            'slug' => $request->slug,
+            'isi_berita' => $request->isi_berita,
+            'link_yt' => $request->link_yt
+        ]);
+
+        return redirect()->route('kegiatan.index')->with('edit', 'ok');
     }
 
     /**

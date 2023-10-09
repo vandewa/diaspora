@@ -59,10 +59,9 @@ class HomeController extends Controller
             ->limit(3)
             ->get();
         $partner = Partner::get();
-        $kegiatan = Kegiatan::with(['video'])
-            ->where('publish_st', 1)
+        $kegiatan = Kegiatan::where('publish_st', 1)
             ->orderBy('created_at', 'desc')
-            ->limit(4)
+            ->limit(3)
             ->get();
 
         return view('home.index', compact('data', 'pendiri', 'berita', 'partner', 'kegiatan'));

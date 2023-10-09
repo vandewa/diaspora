@@ -24,19 +24,14 @@
                                 </li>
                             </ul>
                         </div>
-                        <div class="swiper mySwiper">
-                            <div class="swiper-wrapper">
-                                @if ($data->video)
-                                    <video id="portfolio-vid" controls width="1920" height="420">
-                                        <source src="{{ asset('storage/kegiatan/' . $data->video->nama_file) }}"
-                                            type="video/mp4">
-                                    </video>
-                                @endif
-                            </div>
+                        {{-- <div class="swiper mySwiper">
+                            <div class="swiper-wrapper"> --}}
+                        {!! $data->link_yt !!}
+                        {{-- </div>
                             <div class="swiper-button-next"></div>
                             <div class="swiper-button-prev"></div>
                             <div class="swiper-pagination"></div>
-                        </div>
+                        </div> --}}
                         <div class="post-content clearfix mt-3">
                             {!! $data->isi_berita !!}
                         </div>
@@ -50,9 +45,15 @@
                 </div>
 
             </div>
-
-        </div>
-
         </div>
     </section>
 @endsection
+
+@push('css')
+    <style>
+        iframe {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+        }
+    </style>
+@endpush

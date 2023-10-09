@@ -15,10 +15,13 @@
             <label>Isi Kegiatan</label>
             {{ Form::textarea('isi_berita', null, ['id' => 'summernote']) }}
         </div>
-        <div class="form-group">
+        {{-- <div class="form-group">
             <label>Video <small class="text-danger">(*maksimal 10MB)</small></label>
-            {{-- {{ Form::file('video', null, ['class' => 'form-control ', 'accept' => 'video/mp4,video/x-m4v,video/*']) }} --}}
             <input type="file" class="form-control" name="video" accept="video/mp4,video/x-m4v,video/*">
+        </div> --}}
+        <div class="form-group">
+            <label>Link Youtube</label>
+            {{ Form::textarea('link_yt', null, ['rows' => 3, 'class' => 'form-control']) }}
         </div>
     </div class="form-group">
     <div class="card-footer">

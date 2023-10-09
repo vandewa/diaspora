@@ -23,8 +23,8 @@ class StoreVideoValidation extends FormRequest
     {
         return [
             'judul' => 'required',
-            'isi_berita' => 'required',
-            'video' => 'required|file|max:10000'
+            'link_yt' => 'required',
+            // 'video' => 'required|file|max:10000'
         ];
     }
 }
