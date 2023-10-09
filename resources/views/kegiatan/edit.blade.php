@@ -19,6 +19,19 @@
 @endsection
 
 @push('js')
+    <script>
+        const judul_posting = document.querySelector('#judul');
+        const slug = document.querySelector('#slug');
+
+        judul.addEventListener('change', function() {
+            fetch('/kegiatan/checkSlug?judul=' + judul.value)
+                .then(response => response.json())
+                .then(data => slug.value = data.slug);
+        });
+    </script>
+@endpush
+
+{{-- @push('js')
     <script type="text/javascript">
         var uploadedDocumentMap = {};
         let token = $("meta[name='csrf-token']").attr("content");
@@ -138,4 +151,4 @@
             transform: translate3d(-50%, -50%, 0);
         }
     </style>
-@endpush
+@endpush --}}
