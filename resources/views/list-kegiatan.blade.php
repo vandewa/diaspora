@@ -28,14 +28,7 @@
                                         <h5 class="post-title mb-3 mt-3"><a
                                                 href="{{ route('detail.kegiatan', $k->slug) }}">{{ $k->judul }}</a>
                                         </h5>
-                                        <div class="thumb rounded">
-                                            <a class="category-badge position-absolute">New</a>
-                                            </span>
-                                            <div class="inner">
-                                                {!! $k->link_yt !!}
-                                            </div>
-                                        </div>
-
+                                        {!! $k->link_yt !!}
                                     </div>
                                 </div>
                             @endforeach
