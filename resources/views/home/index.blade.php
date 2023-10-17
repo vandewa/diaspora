@@ -577,7 +577,7 @@
                 <li><a href="#visimisiSection">Visi Misi</a></li>
                 <li><a href="#programSection">Program Kerja</a></li>
                 <li><a href="#kontakSection">Kontak</a></li>
-                <li><a href="#partnerSection"">Partners</a></li>
+                <li><a href="#partnerSection">Partners</a></li>
                 <li><a href="{{ route('anggota') }}">Anggota
                         Komunitas Diaspora</a></li>
             </ul>
