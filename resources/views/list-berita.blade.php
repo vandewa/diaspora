@@ -21,7 +21,7 @@
                                             </span>
                                             <a href="{{ route('detail.berita', $b->slug) }}">
                                                 <div class="inner">
-                                                    <img src="{{ asset($b->sampul->preview_image ?? '') }}"
+                                                    <img src="{{ route('helper.show-picture', ['path' => $b->sampul->path]) }}"
                                                         alt="post-title"style="height:100%;width:100%;object-fit:cover" />
                                                 </div>
                                             </a>

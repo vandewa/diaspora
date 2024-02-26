@@ -1,16 +1,17 @@
 <?php
 
-use App\Http\Controllers\AnggotaController;
-use App\Http\Controllers\BeritaController;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\FileController;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\FileController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\InformasiUmumController;
+use App\Http\Controllers\BeritaController;
+use App\Http\Controllers\HelperController;
+use App\Http\Controllers\AnggotaController;
+use App\Http\Controllers\PendiriController;
 use App\Http\Controllers\KegiatanController;
 use App\Http\Controllers\PartnersController;
-use App\Http\Controllers\PendiriController;
-use Illuminate\Support\Facades\File;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\InformasiUmumController;
 
 
 /*
@@ -32,6 +33,8 @@ Route::get('/list-kegiatan', [HomeController::class, 'listKegiatan'])->name('keg
 Route::get('/tentang-pengurus/{id}', [HomeController::class, 'pengurus'])->name('detail.pengurus');
 Route::get('anggota-komunitas', [HomeController::class, 'anggota'])->name('anggota');
 Route::post('anggota-komunitas', [HomeController::class, 'storeAnggota'])->name('anggota.post');
+
+Route::get('show-picture', [HelperController::class, 'showPicture'])->name('helper.show-picture');
 
 //dokumentasi template
 Route::get('docs', function () {

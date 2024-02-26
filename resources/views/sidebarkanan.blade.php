@@ -40,7 +40,8 @@
                                 <h5>{{ $list->jabatan ?? '' }}</h5>
                             </center>
                             <a href="{{ route('detail.pengurus', $list->id) }}">
-                                <img src="{{ $list->preview_image }}" class="d-block w-100" style="max-height: 300px;">
+                                <img src="{{ route('helper.show-picture', ['path' => $data->path_foto]) }}"
+                                    class="d-block w-100" style="max-height: 300px;">
                                 <div class="carousel-caption d-none d-md-block">
                                     <span class="badge bg-danger"
                                         style="font-size: 15px;">{{ $list->nama ?? '' }}</span>

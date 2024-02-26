@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Berita;
+use Carbon\Carbon;
 use App\Models\File;
+use App\Models\Berita;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class FileController extends Controller
@@ -30,15 +31,9 @@ class FileController extends Controller
      */
     public function store(Request $request)
     {
-        $path = storage_path('tmp/uploads');
-
-        if (!file_exists($path)) {
-            mkdir($path, 0777, true);
-        }
-
         $file = $request->file('file');
         $name = uniqid() . '_' . trim($file->getClientOriginalName());
-        $file->move($path, $name);
+        $path = $file->storeAs('diaspora/', $name);
 
         return response()->json([
             'name' => $name,
@@ -58,10 +53,11 @@ class FileController extends Controller
             $fileList[] = [
                 'name' => $d->nama_file,
                 'size' => Storage::size(($d->path)),
-                'path' => $d->preview_image
+                'path' => route('helper.show-picture', array('path' => $d->path))
             ];
         }
         return json_encode($fileList ?? []);
+
     }
 
     /**
@@ -85,20 +81,20 @@ class FileController extends Controller
      */
     public function destroy($id)
     {
-        $loc = storage_path('tmp/uploads/') . $id;
+        // $loc = storage_path('tmp/uploads/') . $id;
 
-        if (file_exists($loc)) {
-            unlink(storage_path('tmp/uploads/' . $id));
-            return response()->json([
-                'lokasi' => $loc,
-            ]);
-        } else {
-            $data = File::where('nama_file', $id)->first();
-            unlink((str_replace('public', 'storage', $data->path)));
-            $data->delete();
-            return response()->json([
-                'lokasi' => 'File terhapus'
-            ]);
-        }
+        // if (file_exists($loc)) {
+        //     unlink(storage_path('tmp/uploads/' . $id));
+        //     return response()->json([
+        //         'lokasi' => $loc,
+        //     ]);
+        // } else {
+        //     $data = File::where('nama_file', $id)->first();
+        //     unlink((str_replace('public', 'storage', $data->path)));
+        //     $data->delete();
+        //     return response()->json([
+        //         'lokasi' => 'File terhapus'
+        //     ]);
+        // }
     }
 }

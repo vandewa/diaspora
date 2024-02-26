@@ -14,8 +14,7 @@
                             <h1 class="title mt-0 mb-3">{{ $data->judul }}</h1>
                             <ul class="meta list-inline mb-0">
                                 <li class="list-inline-item"><a href="#">
-                                        <img src="{{ asset('a.png') }}" alt="author"
-                                            style="height: 20px;"class="mr-3" />
+                                        <img src="{{ asset('a.png') }}" alt="author" style="height: 20px;"class="mr-3" />
                                         {{ $b->dibuat->name ?? '' }}
                                     </a></li>
                                 <li class="list-inline-item"><a href="#">Trending</a></li>
@@ -32,7 +31,8 @@
                             <div class="swiper-wrapper">
                                 @foreach ($data->foto as $list)
                                     <div class="swiper-slide">
-                                        <img src="{{ asset($list->preview_image ?? '') }}" alt="image"
+                                        <img src="{{ route('helper.show-picture', ['path' => $list->path]) }}"
+                                            alt="image"
                                             style="height: 100%; border-top-left-radius: 25px; border-top-right-radius: 25px;" />
                                     </div>
                                 @endforeach

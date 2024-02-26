@@ -28,7 +28,7 @@ class PendiriController extends Controller
                     </div>';
                 })
                 ->addColumn('image', function ($data) {
-                    return '<img src="' . $data->preview_image . '" style="height:100px;">';
+                    return '<img src="' . route('helper.show-picture', ['path' => $data->path_foto]) . '" style="height:100px;">';
                 })
                 ->rawColumns(['action', 'image'])
                 ->make(true);
@@ -52,7 +52,7 @@ class PendiriController extends Controller
     {
         if ($request->file('path_foto')) {
             $lokasi = $request->file('path_foto')->storeAs(
-                'public/pendiri/',
+                'diaspora/public/pendiri/',
                 date('Ymdhis') . '.' . $request->file('path_foto')->extension()
             );
         }
@@ -92,7 +92,7 @@ class PendiriController extends Controller
     {
         if ($request->file('path_foto')) {
             $lokasi = $request->file('path_foto')->storeAs(
-                'public/pendiri/',
+                'diaspora/public/pendiri/',
                 date('Ymdhis') . '.' . $request->file('path_foto')->extension()
             );
         } else {

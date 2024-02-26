@@ -27,7 +27,7 @@ class PartnersController extends Controller
                     </div>';
                 })
                 ->addColumn('image', function ($data) {
-                    return '<img src="' . $data->preview_image . '" style="width:150px;">';
+                    return '<img src="' . route('helper.show-picture', ['path' => $data->logo]) . '" style="width:150px;">';
                 })
                 ->rawColumns(['action', 'image'])
                 ->make(true);
@@ -51,7 +51,7 @@ class PartnersController extends Controller
     {
         if ($request->file('logo')) {
             $lokasi = $request->file('logo')->storeAs(
-                'public/partner/',
+                'diaspora/public/partner/',
                 date('Ymdhis') . '.' . $request->file('logo')->extension()
             );
         }
@@ -90,7 +90,7 @@ class PartnersController extends Controller
     {
         if ($request->file('logo')) {
             $lokasi = $request->file('logo')->storeAs(
-                'public/pendiri/',
+                'diaspora/public/partner/',
                 date('Ymdhis') . '.' . $request->file('logo')->extension()
             );
         } else {

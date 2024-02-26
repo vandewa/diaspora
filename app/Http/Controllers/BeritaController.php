@@ -71,21 +71,14 @@ class BeritaController extends Controller
             'created_by' => auth()->user()->id,
         ]);
 
-        foreach ($request->document as $file) {
-            $path = storage_path('app/public/' . Carbon::now()->isoFormat('Y') . '/' . Carbon::now()->isoFormat('MMMM') . '/');
-
-            if (!file_exists($path)) {
-                mkdir($path, 0777, true);
+        if ($request->document) {
+            foreach ($request->document as $file) {
+                Files::create([
+                    'berita_id' => $berita->id,
+                    'nama_file' => $file,
+                    'path' => 'diaspora/' . $file
+                ]);
             }
-
-            $from = storage_path('tmp/uploads/' . $file);
-            $to = $path . $file;
-            File::move($from, $to);
-            Files::create([
-                'berita_id' => $berita->id,
-                'nama_file' => $file,
-                'path' => 'public/' . Carbon::now()->isoFormat('Y') . '/' . Carbon::now()->isoFormat('MMMM') . '/' . $file
-            ]);
         }
 
         return redirect()->route('berita.index')->with('store', 'oke');
@@ -121,19 +114,30 @@ class BeritaController extends Controller
             'isi_berita' => $request->isi_berita,
         ]);
 
+        // if ($request->document) {
+        //     foreach ($request->document as $file) {
+        //         $path = storage_path('app/public/' . Carbon::now()->isoFormat('Y') . '/' . Carbon::now()->isoFormat('MMMM') . '/');
+        //         $from = storage_path('tmp/uploads/' . $file);
+        //         $to = $path . $file;
+        //         File::move($from, $to);
+        //         Files::create([
+        //             'berita_id' => $id,
+        //             'nama_file' => $file,
+        //             'path' => 'public/' . Carbon::now()->isoFormat('Y') . '/' . Carbon::now()->isoFormat('MMMM') . '/' . $file
+        //         ]);
+        //     }
+        // }
+
         if ($request->document) {
             foreach ($request->document as $file) {
-                $path = storage_path('app/public/' . Carbon::now()->isoFormat('Y') . '/' . Carbon::now()->isoFormat('MMMM') . '/');
-                $from = storage_path('tmp/uploads/' . $file);
-                $to = $path . $file;
-                File::move($from, $to);
                 Files::create([
                     'berita_id' => $id,
                     'nama_file' => $file,
-                    'path' => 'public/' . Carbon::now()->isoFormat('Y') . '/' . Carbon::now()->isoFormat('MMMM') . '/' . $file
+                    'path' => 'diaspora/' . $file
                 ]);
             }
         }
+
 
         return redirect()->route('berita.index')->with('edit', 'oke');
     }

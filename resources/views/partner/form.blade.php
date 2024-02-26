@@ -29,8 +29,9 @@
                          <img id="preview-image-before-upload" src="{{ asset('not-found.jpg') }}" alt="preview image"
                              style="max-height: 250px;">
                      @else
-                         <img id="preview-image-before-upload" src="{{ asset($data->preview_image) }}"
-                             alt="preview image" style="max-height: 250px; max-width: 300px;">
+                         <img id="preview-image-before-upload"
+                             src="{{ route('helper.show-picture', ['path' => $data->logo]) }}" alt="preview image"
+                             style="max-height: 250px; max-width: 300px;">
                      @endif
                      <label class="custom-file-label mb-5" for="customFile">Choose file</label>
                  @endif
